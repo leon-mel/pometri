@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Classes/classSizeConfig.dart';
+import '../UI/Options/Optionmenu.dart';
 import '../widgets/menu_point.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,12 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             });
                           },
                         ),
-                  const Text('Pometri',
+                  const Text(
+                      'Bochum', //shows the current location at a later point
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black87,
                           decoration: TextDecoration.none)),
-                  Container(),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Optionmenu.route);
+                      },
+                      icon: Icon(Icons.settings)),
                 ],
               )),
           const SizedBox(
