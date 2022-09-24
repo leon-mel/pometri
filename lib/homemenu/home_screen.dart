@@ -21,21 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return AnimatedContainer(
       height: SizeConfig.screenHeight,
       width: SizeConfig.screenWidth,
-      
-
       transform: Matrix4.translationValues(xOffset, yOffset, 0)
         ..scale(isDrawerOpen ? 0.85 : 1.00)
         ..rotateZ(isDrawerOpen ? -50 : 0),
       duration: const Duration(milliseconds: 200),
-      
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: isDrawerOpen
               ? BorderRadius.circular(40)
               : BorderRadius.circular(0)),
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
         children: <Widget>[
           const SizedBox(
             height: 50,
@@ -60,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: const Icon(Icons.menu),
                           onTap: () {
                             setState(() {
-                              xOffset = SizeConfig.blockSizeHorizontal*80;
-                              yOffset = SizeConfig.blockSizeVertical*15.1;
+                              xOffset = SizeConfig.blockSizeHorizontal * 80;
+                              yOffset = SizeConfig.blockSizeVertical * 15.1;
                               isDrawerOpen = true;
                             });
                           },
@@ -78,32 +73,25 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 40,
           ),
           SizedBox(
-             height:SizeConfig.blockSizeVertical*80,
+            height: SizeConfig.blockSizeVertical * 80,
             child: Column(
-              
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children:   const <Widget>[
+              children: const <Widget>[
                 NewPadding(
                   image1: 'assets/herz.jpg',
-             
-                  text1: 'this will start the algorithm', text3: 'Date',
-               
+                  text1: 'this will start the algorithm',
+                  text3: 'Date',
                 ),
-                
                 NewPadding(
                   image1: 'assets/pencil.png',
-                 
-                  text1: 'here you can change your criteries', text3: 'Criteries',
-                  
+                  text1: 'here you can change your criteries',
+                  text3: 'Criteries',
                 ),
-               
                 NewPadding(
                   image1: 'assets/chat.png',
-                  
-                  text1: 'here you can chat with your matches', text3: 'Chat',
-                 
+                  text1: 'here you can chat with your matches',
+                  text3: 'Chat',
                 ),
-               
               ],
             ),
           )
@@ -112,5 +100,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
