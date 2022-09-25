@@ -137,11 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //       text1: 'this will start the algorithm',
               //       text3: 'Date',
               //     ),
-              //     NewPadding(
-              //       image1: 'assets/pencil.png',
-              //       text1: 'here you can change your criteries',
-              //       text3: 'Criteries',
-              //     ),
+              //    
               //     NewPadding(
               //       image1: 'assets/chat.png',
               //       text1: 'here you can chat with your matches',
