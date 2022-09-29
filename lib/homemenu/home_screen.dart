@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(
                   top: SizeConfig.safeBlockVertical * 4,
                   left: SizeConfig.safeBlockHorizontal * 5,
-                  bottom: SizeConfig.safeBlockHorizontal*5),
+                  bottom: SizeConfig.safeBlockHorizontal * 5),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: RichText(
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //       text1: 'this will start the algorithm',
               //       text3: 'Date',
               //     ),
-              //    
+              //
               //     NewPadding(
               //       image1: 'assets/chat.png',
               //       text1: 'here you can chat with your matches',
@@ -150,7 +150,33 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.white,
             thickness: 1.5,
             indent: SizeConfig.safeBlockHorizontal * 5,
-            endIndent: SizeConfig.safeBlockHorizontal *35,
+            endIndent: SizeConfig.safeBlockHorizontal * 35,
+          ),
+          SizedBox(
+            height: SizeConfig.safeBlockVertical * 6,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                top: SizeConfig.safeBlockVertical * 4,
+                left: SizeConfig.safeBlockHorizontal * 5,
+                bottom: SizeConfig.safeBlockHorizontal * 5),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: RichText(
+                text: const TextSpan(
+                    text: "A new ",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: "match ",
+                          style: TextStyle(color: Color(0xff590d22))),
+                      TextSpan(text: "for ", style: TextStyle()),
+                      TextSpan(
+                          text: "You?",
+                          style: TextStyle(fontWeight: FontWeight.w600))
+                    ]),
+              ),
+            ),
           )
         ],
       ),
