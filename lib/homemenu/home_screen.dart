@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
 
 import '../Classes/classSizeConfig.dart';
 import '../UI/Options/Optionmenu.dart';
@@ -21,24 +22,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: AnimatedContainer(
-        constraints: BoxConstraints(minHeight: SizeConfig.screenHeight),
-        //height: SizeConfig.screenHeight,
-        width: SizeConfig.screenWidth,
-        transform: Matrix4.translationValues(xOffset, yOffset, 0)
-          ..scale(isDrawerOpen ? 0.85 : 1.00)
-          ..rotateZ(isDrawerOpen ? -50 : 0),
-        duration: const Duration(milliseconds: 200),
-        decoration: BoxDecoration(
-            gradient: const LinearGradient(
-                colors: [Color(0xffff4d6d), Color(0xffff8fa3)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter),
-            //color: Colors.white,
-            borderRadius: isDrawerOpen
-                ? BorderRadius.circular(40)
-                : BorderRadius.circular(0)),
+    return AnimatedContainer(
+      constraints: BoxConstraints(minHeight: SizeConfig.screenHeight),
+      //height: SizeConfig.screenHeight,
+      width: SizeConfig.screenWidth,
+      transform: Matrix4.translationValues(xOffset, yOffset, 0)
+        ..scale(isDrawerOpen ? 0.85 : 1.00)
+        ..rotateZ(isDrawerOpen ? -50 : 0),
+      duration: const Duration(milliseconds: 200),
+      decoration: BoxDecoration(
+          gradient: const LinearGradient(
+              colors: [Color(0xffff4d6d), Color(0xffff8fa3)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+          //color: Colors.white,
+          borderRadius: isDrawerOpen
+              ? BorderRadius.circular(40)
+              : BorderRadius.circular(0)),
+      child: SingleChildScrollView(
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -110,45 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            Padding(
-                padding: EdgeInsets.only(
-                    top: SizeConfig.safeBlockVertical * 4,
-                    left: SizeConfig.safeBlockHorizontal * 5,
-                    bottom: SizeConfig.safeBlockHorizontal * 5),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Welcome ",
-                        style: const TextStyle(
-                            fontSize: 34, fontWeight: FontWeight.w500),
-                        children: <TextSpan>[
-                          const TextSpan(
-                              text: "back \n",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff590d22))),
-                          TextSpan(text: uname)
-                        ]),
-                  ),
-                )
-                // Column(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: const <Widget>[
-                //     NewPadding(
-                //       image1: 'assets/herz.jpg',
-                //       text1: 'this will start the algorithm',
-                //       text3: 'Date',
-                //     ),
-                //
-                //     NewPadding(
-                //       image1: 'assets/chat.png',
-                //       text1: 'here you can chat with your matches',
-                //       text3: 'Chat',
-                //     ),
-                //   ],
-                // )
-                ),
+            buildGreetings(uname: uname),
             Divider(
               color: Colors.white,
               thickness: 1.5,
@@ -158,35 +121,95 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: SizeConfig.safeBlockVertical * 6,
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: SizeConfig.safeBlockVertical * 4,
-                  left: SizeConfig.safeBlockHorizontal * 5,
-                  bottom: SizeConfig.safeBlockHorizontal * 5),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: RichText(
-                  text: const TextSpan(
-                      text: "A new ",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: "match ",
-                            style: TextStyle(color: Color(0xff590d22))),
-                        TextSpan(text: "for ", style: TextStyle()),
-                        TextSpan(
-                            text: "You?",
-                            style: TextStyle(fontWeight: FontWeight.w600))
-                      ]),
-                ),
-              ),
-            ),
+            buildCenter(),
             buildBottom(rname: rname),
             buildBottom(rname: rname),
             buildBottom(rname: rname),
-            
+          //  buildBottom(rname: rname)
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class buildGreetings extends StatelessWidget {
+  const buildGreetings({
+    Key? key,
+    required this.uname,
+  }) : super(key: key);
+
+  final String uname;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.only(
+            top: SizeConfig.safeBlockVertical * 4,
+            left: SizeConfig.safeBlockHorizontal * 5,
+            bottom: SizeConfig.safeBlockHorizontal * 5),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: RichText(
+            text: TextSpan(
+                text: "Welcome ",
+                style:
+                    const TextStyle(fontSize: 34, fontWeight: FontWeight.w500),
+                children: <TextSpan>[
+                  const TextSpan(
+                      text: "back \n",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff590d22))),
+                  TextSpan(text: uname)
+                ]),
+          ),
+        )
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //   children: const <Widget>[
+        //     NewPadding(
+        //       image1: 'assets/herz.jpg',
+        //       text1: 'this will start the algorithm',
+        //       text3: 'Date',
+        //     ),
+        //
+        //     NewPadding(
+        //       image1: 'assets/chat.png',
+        //       text1: 'here you can chat with your matches',
+        //       text3: 'Chat',
+        //     ),
+        //   ],
+        // )
+        );
+  }
+}
+
+class buildCenter extends StatelessWidget {
+  const buildCenter({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+          top: SizeConfig.safeBlockVertical * 4,
+          left: SizeConfig.safeBlockHorizontal * 5,
+          bottom: SizeConfig.safeBlockHorizontal * 5),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: RichText(
+          text: const TextSpan(
+              text: "A new ",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+              children: <TextSpan>[
+                TextSpan(
+                    text: "match ", style: TextStyle(color: Color(0xff590d22))),
+                TextSpan(text: "for ", style: TextStyle()),
+                TextSpan(
+                    text: "You?", style: TextStyle(fontWeight: FontWeight.w600))
+              ]),
         ),
       ),
     );
@@ -203,30 +226,34 @@ class buildBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: SizeConfig.safeBlockVertical * 4,
-        left: SizeConfig.safeBlockHorizontal * 5,
-        bottom: SizeConfig.safeBlockHorizontal * 5,
-      ),
-      child: Align(
-          alignment: Alignment.topLeft,
-          child: Row(
-            children: [
-              CircleAvatar(backgroundColor: Colors.black),
-              Padding(
-                padding:
-                    EdgeInsets.only(left: SizeConfig.safeBlockVertical * 2),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(rname), Text("Likes Soccer and Gaming")],
+    return Bounce(
+      duration: const Duration(milliseconds: 200),
+      onPressed: () {},
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: SizeConfig.safeBlockVertical * 4,
+          left: SizeConfig.safeBlockHorizontal * 5,
+          bottom: SizeConfig.safeBlockHorizontal * 5,
+        ),
+        child: Align(
+            alignment: Alignment.topLeft,
+            child: Row(
+              children: [
+                CircleAvatar(backgroundColor: Colors.black),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: SizeConfig.safeBlockVertical * 2),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text(rname), Text("Likes Soccer and Gaming")],
+                  ),
                 ),
-              ),
-              Column(
-                children: [],
-              )
-            ],
-          )),
+                Column(
+                  children: [],
+                )
+              ],
+            )),
+      ),
     );
   }
 }
