@@ -22,113 +22,117 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      constraints: BoxConstraints(minHeight: SizeConfig.screenHeight),
-      //height: SizeConfig.screenHeight,
-      width: SizeConfig.screenWidth,
-      transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(isDrawerOpen ? 0.85 : 1.00)
-        ..rotateZ(isDrawerOpen ? -50 : 0),
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-          gradient: const LinearGradient(
-              colors: [Color(0xffff4d6d), Color(0xffff8fa3)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-          //color: Colors.white,
-          borderRadius: isDrawerOpen
-              ? BorderRadius.circular(40)
-              : BorderRadius.circular(0)),
-      child: SingleChildScrollView(
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const SizedBox(
-              height: 50,
-            ),
-            Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    isDrawerOpen
-                        ? GestureDetector(
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.white,
-                            ),
-                            onTap: () {
-                              setState(() {
-                                xOffset = 0;
-                                yOffset = 0;
-                                isDrawerOpen = false;
-                              });
+    return Column(
+      children: [
+        AnimatedContainer(
+          constraints: BoxConstraints(minHeight: SizeConfig.screenHeight),
+          //height: SizeConfig.screenHeight,
+          width: SizeConfig.screenWidth,
+          transform: Matrix4.translationValues(xOffset, yOffset, 0)
+            ..scale(isDrawerOpen ? 0.85 : 1.00)
+            ..rotateZ(isDrawerOpen ? -50 : 0),
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                  colors: [Color(0xffff4d6d), Color(0xffff8fa3)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter),
+              //color: Colors.white,
+              borderRadius: isDrawerOpen
+                  ? BorderRadius.circular(40)
+                  : BorderRadius.circular(0)),
+          child: SingleChildScrollView(
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const SizedBox(
+                  height: 50,
+                ),
+                Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        isDrawerOpen
+                            ? GestureDetector(
+                                child: const Icon(
+                                  Icons.arrow_back_ios,
+                                  color: Colors.white,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    xOffset = 0;
+                                    yOffset = 0;
+                                    isDrawerOpen = false;
+                                  });
+                                },
+                              )
+                            : GestureDetector(
+                                child: const Icon(
+                                  Icons.menu,
+                                  color: Colors.white,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    xOffset = SizeConfig.blockSizeHorizontal * 80;
+                                    yOffset = SizeConfig.blockSizeVertical * 15.1;
+                                    isDrawerOpen = true;
+                                  });
+                                },
+                              ),
+                        const Text('', //shows the current location at a later point
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                decoration: TextDecoration.none)),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, Optionmenu.route);
                             },
-                          )
-                        : GestureDetector(
-                            child: const Icon(
-                              Icons.menu,
+                            icon: Icon(
+                              Icons.settings,
                               color: Colors.white,
-                            ),
-                            onTap: () {
-                              setState(() {
-                                xOffset = SizeConfig.blockSizeHorizontal * 80;
-                                yOffset = SizeConfig.blockSizeVertical * 15.1;
-                                isDrawerOpen = true;
-                              });
-                            },
-                          ),
-                    const Text('', //shows the current location at a later point
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            decoration: TextDecoration.none)),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, Optionmenu.route);
-                        },
-                        icon: Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                        )),
-                  ],
-                )),
-            SizedBox(
-              height: SizeConfig.safeBlockHorizontal * 2,
-            ),
-            Container(
-              padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 5),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: CircleAvatar(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: const Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/leon_1.jpg'),
+                            )),
+                      ],
+                    )),
+                SizedBox(
+                  height: SizeConfig.safeBlockHorizontal * 2,
+                ),
+                Container(
+                  padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 5),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: CircleAvatar(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: const Image(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/leon_1.jpg'),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                buildGreetings(uname: uname),
+                Divider(
+                  color: Colors.white,
+                  thickness: 1.5,
+                  indent: SizeConfig.safeBlockHorizontal * 5,
+                  endIndent: SizeConfig.safeBlockHorizontal * 35,
+                ),
+                SizedBox(
+                  height: SizeConfig.safeBlockVertical * 6,
+                ),
+                buildCenter(),
+                buildBottom(rname: rname),
+                buildBottom(rname: rname),
+                buildBottom(rname: rname),
+                
+              ],
             ),
-            buildGreetings(uname: uname),
-            Divider(
-              color: Colors.white,
-              thickness: 1.5,
-              indent: SizeConfig.safeBlockHorizontal * 5,
-              endIndent: SizeConfig.safeBlockHorizontal * 35,
-            ),
-            SizedBox(
-              height: SizeConfig.safeBlockVertical * 6,
-            ),
-            buildCenter(),
-            buildBottom(rname: rname),
-            buildBottom(rname: rname),
-            buildBottom(rname: rname),
-          //  buildBottom(rname: rname)
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -165,22 +169,7 @@ class buildGreetings extends StatelessWidget {
                 ]),
           ),
         )
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //   children: const <Widget>[
-        //     NewPadding(
-        //       image1: 'assets/herz.jpg',
-        //       text1: 'this will start the algorithm',
-        //       text3: 'Date',
-        //     ),
-        //
-        //     NewPadding(
-        //       image1: 'assets/chat.png',
-        //       text1: 'here you can chat with your matches',
-        //       text3: 'Chat',
-        //     ),
-        //   ],
-        // )
+       
         );
   }
 }
@@ -249,7 +238,7 @@ class buildBottom extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: [],
+                  children: [],   //accept or decline
                 )
               ],
             )),
