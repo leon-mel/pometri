@@ -74,13 +74,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    xOffset = SizeConfig.blockSizeHorizontal * 80;
-                                    yOffset = SizeConfig.blockSizeVertical * 15.1;
+                                    xOffset =
+                                        SizeConfig.blockSizeHorizontal * 80;
+                                    yOffset =
+                                        SizeConfig.blockSizeVertical * 15.1;
                                     isDrawerOpen = true;
                                   });
                                 },
                               ),
-                        const Text('', //shows the current location at a later point
+                        const Text(
+                            '', //shows the current location at a later point
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
@@ -126,8 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 buildCenter(),
                 buildBottom(rname: rname),
                 buildBottom(rname: rname),
-                buildBottom(rname: rname),
-                
+                //   buildBottom(rname: rname),
               ],
             ),
           ),
@@ -168,9 +170,7 @@ class buildGreetings extends StatelessWidget {
                   TextSpan(text: uname)
                 ]),
           ),
-        )
-       
-        );
+        ));
   }
 }
 
@@ -238,7 +238,7 @@ class buildBottom extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: [],   //accept or decline
+                  children: [], //accept or decline
                 )
               ],
             )),
