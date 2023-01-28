@@ -17,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
       width: SizeConfig.screenWidth,
       color: Colors.white,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
               alignment: Alignment.bottomCenter,
@@ -36,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: SizeConfig.safeBlockVertical*45,
+                  top: SizeConfig.safeBlockVertical * 45,
                   child: SizedBox(
                     width: SizeConfig.screenWidth,
                     child: Row(
@@ -61,7 +62,25 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 )
               ]),
-              
+          Padding(
+            padding: EdgeInsets.only(
+                left: SizeConfig.blockSizeHorizontal * 5,
+                top: SizeConfig.blockSizeHorizontal * 10),
+            child: Row(
+              children: [
+                Text(
+                  "Agnes, ",
+                  style:
+                      TextStyle(fontSize: 26, decoration: TextDecoration.none),
+                ),
+                Text(
+                  "27",
+                  style:
+                      TextStyle(fontSize: 26, decoration: TextDecoration.none),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
