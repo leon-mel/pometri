@@ -4,6 +4,7 @@ import '../UI/Options/Optionmenu.dart';
 import '../UI/Login/loginMain.dart';
 import '../navigator/profileScreen.dart';
 
+
 class NewRow extends StatelessWidget {
   final IconData icon_1;
   final String text;
@@ -51,3 +52,4 @@ class NewRow extends StatelessWidget {
     );
   }
 }
+

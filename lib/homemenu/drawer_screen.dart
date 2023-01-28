@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:hexcolor/hexcolor.dart';
-import '../navigator/profileScreen.dart';
+import 'package:speeddatingapp/navigator/profileScreen.dart';
+
 import '../widgets/menu_button.dart';
 
 class DrawerScreen extends StatefulWidget {

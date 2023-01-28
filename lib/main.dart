@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/Classes/classSizeConfig.dart';
+import 'package:speeddatingapp/navigator/profileScreen.dart';
 import 'Classes/classRoutes.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class SpeedDatingApp extends StatelessWidget {
       home: Builder(
         builder: (BuildContext context) {
           SizeConfig().initState(context);
-          return const Login();
+          return const ProfileScreen();
         },
       ),
       routes: getRoutes(),
