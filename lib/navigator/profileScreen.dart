@@ -12,76 +12,108 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: SizeConfig.screenHeight,
-      width: SizeConfig.screenWidth,
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-              alignment: Alignment.bottomCenter,
-              clipBehavior: Clip.none,
-              children: [
-                SizedBox(
-                  height: SizeConfig.screenHeight / 2,
-                  width: SizeConfig.screenWidth,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(25),
-                        bottomRight: Radius.circular(25)),
-                    child: Image.asset(
-                      'assets/user.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: SizeConfig.safeBlockVertical * 45,
-                  child: SizedBox(
+    return SafeArea(
+      child: Container(
+        height: SizeConfig.screenHeight,
+        width: SizeConfig.screenWidth,
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+                alignment: Alignment.bottomCenter,
+                clipBehavior: Clip.none,
+                children: [
+                  SizedBox(
+                    height: SizeConfig.screenHeight / 2,
                     width: SizeConfig.screenWidth,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const DecisionButton(
-                          color: Colors.white,
-                          icon: Icons.close,
-                          iconColor: Colors.black,
-                        ),
-                        DecisionButton(
-                          color: Colors.red[800],
-                          icon: CupertinoIcons.heart_solid,
-                          iconColor: Colors.white,
-                        ),
-                        const DecisionButton(
-                            color: Colors.white,
-                            icon: Icons.star,
-                            iconColor: Colors.black)
-                      ],
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25)),
+                      child: Image.asset(
+                        'assets/user.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                )
-              ]),
-          Padding(
-            padding: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 5,
-                top: SizeConfig.blockSizeHorizontal * 10),
-            child: Row(
-              children: [
-                Text(
-                  "Agnes, ",
-                  style:
-                      TextStyle(fontSize: 26, decoration: TextDecoration.none),
-                ),
-                Text(
-                  "27",
-                  style:
-                      TextStyle(fontSize: 26, decoration: TextDecoration.none),
-                )
-              ],
+                  Positioned(
+                    top: SizeConfig.safeBlockVertical * 45,
+                    child: SizedBox(
+                      width: SizeConfig.screenWidth,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const DecisionButton(
+                            color: Colors.white,
+                            icon: Icons.close,
+                            iconColor: Colors.black,
+                          ),
+                          DecisionButton(
+                            color: Colors.red[800],
+                            icon: CupertinoIcons.heart_solid,
+                            iconColor: Colors.white,
+                          ),
+                          const DecisionButton(
+                              color: Colors.white,
+                              icon: Icons.star,
+                              iconColor: Colors.black)
+                        ],
+                      ),
+                    ),
+                  )
+                ]),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: SizeConfig.blockSizeHorizontal * 5,
+                  top: SizeConfig.blockSizeHorizontal * 10),
+              child: Row(
+                children: [
+                  Text(
+                    "Agnes, ",
+                    style: TextStyle(
+                        fontSize: 26,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]),
+                  ),
+                  Text(
+                    "27",
+                    style: TextStyle(
+                        fontSize: 26,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]),
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+            Padding(
+              padding: EdgeInsets.only(
+                  left: SizeConfig.blockSizeHorizontal * 5,
+                  top: SizeConfig.blockSizeHorizontal * 2),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    color: Colors.grey[500]?.withOpacity(0.5),
+                    size: 16,
+                  ),
+                  Text(
+                    "City ",
+                    style: TextStyle(
+                        fontSize: 14,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]?.withOpacity(0.5)),
+                  ),
+                  Text("47 km",
+                      style: TextStyle(
+                          fontSize: 14,
+                          decoration: TextDecoration.none,
+                          color: Colors.grey[500]?.withOpacity(0.5)))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
