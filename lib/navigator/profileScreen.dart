@@ -32,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
             userAge: state.user.uAge,
             userLocation: state.user.uLocation,
             userName: state.user.uName,
+            userInterest: state.user.uInterest,
           );
         }
         return const Placeholder();
@@ -45,12 +46,14 @@ class ProfileShowCase extends StatelessWidget {
   final userAge;
   final userLocation;
   final userAboutMe;
+  final List<String>? userInterest;
   const ProfileShowCase({
     Key? key,
     required this.userName,
     required this.userAge,
     required this.userLocation,
     required this.userAboutMe,
+    required this.userInterest,
   }) : super(key: key);
 
   @override
@@ -192,6 +195,31 @@ class ProfileShowCase extends StatelessWidget {
                       color: Colors.grey[500]),
                 ),
               ),
+              Wrap(children: [
+                for (var i in userInterest!)
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 5,
+                        top: SizeConfig.blockSizeHorizontal * 3),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.grey.withOpacity(0.5)),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          i,
+                          style: TextStyle(
+                              fontSize: 14,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey[500]?.withOpacity(0.8),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
+                  ),
+              ])
             ],
           ),
         ),
