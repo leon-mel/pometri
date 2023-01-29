@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../Classes/classSizeConfig.dart';
-
+import '../../../domain/entities/classSizeConfig.dart';
 
 class TextFieldMail extends StatefulWidget {
   const TextFieldMail({Key? key}) : super(key: key);
@@ -19,13 +18,17 @@ class _TextFieldMailState extends State<TextFieldMail> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 1.5, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 1.5,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -48,16 +51,20 @@ class _TextFieldMailState extends State<TextFieldMail> {
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
               ),
               floatingLabelStyle: TextStyle(
-                color: floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                color: floatingLabelColor = _focusTextfield.hasFocus
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF000000),
                 fontWeight: FontWeight.bold,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -76,22 +83,26 @@ class ReturnToLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 1.5, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+          top: SizeConfig.blockSizeVertical * 1.5,
+          left: SizeConfig.blockSizeHorizontal * 5,
+          right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-              child: Container(
-                height: SizeConfig.blockSizeVertical * 5,
-                width: SizeConfig.blockSizeHorizontal * 50,
-                child: ElevatedButton(
-            onPressed: () {
-                Navigator.pop(context);
-            },
-            child: Text("Back to Login", style: TextStyle(color: Color(0xFF000000),fontWeight: FontWeight.bold)),
-                  style: ElevatedButton.styleFrom(
-                    side: BorderSide(color: Color(0xFF000000)),
-                    primary: Color(0xFFE6E6E6),
-                  ),
+          child: Container(
+        height: SizeConfig.blockSizeVertical * 5,
+        width: SizeConfig.blockSizeHorizontal * 50,
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Back to Login",
+              style: TextStyle(
+                  color: Color(0xFF000000), fontWeight: FontWeight.bold)),
+          style: ElevatedButton.styleFrom(
+            side: BorderSide(color: Color(0xFF000000)),
+            primary: Color(0xFFE6E6E6),
           ),
-              )),
+        ),
+      )),
     );
   }
 }
@@ -103,44 +114,47 @@ class ResetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+          top: SizeConfig.blockSizeVertical * 2,
+          left: SizeConfig.blockSizeHorizontal * 5,
+          right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
           child: Container(
-            height: SizeConfig.blockSizeVertical * 5,
-            width: SizeConfig.blockSizeHorizontal * 50,
-            child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: ElevatedButton.icon(
+        height: SizeConfig.blockSizeVertical * 5,
+        width: SizeConfig.blockSizeHorizontal * 50,
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: ElevatedButton.icon(
+            onPressed: () {
+              Widget okButton = TextButton(
+                child:
+                    Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
                 onPressed: () {
-                  Widget okButton = TextButton(
-                    child: Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  );
-                  AlertDialog alert = AlertDialog(
-                    title: Text("Notification"),
-                    content: Text("An E-Mail has been sent to reset your password."),
-                      actions: [
-                        okButton
-                      ]
-                  );
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return alert;
-                    },
-                  );
+                  Navigator.pop(context);
                 },
-                icon: Icon(Icons.key,color: Color(0xFF000000)),
-                label: Text("Reset password", style: TextStyle(color: Color(0xFF000000),fontWeight: FontWeight.bold)),
-                style: ElevatedButton.styleFrom(
-                  side: BorderSide(color: Color(0xFF000000)),
-                  primary: Color(0xFFE6E6E6),
-                ),
-              ),
+              );
+              AlertDialog alert = AlertDialog(
+                  title: Text("Notification"),
+                  content:
+                      Text("An E-Mail has been sent to reset your password."),
+                  actions: [okButton]);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
+            icon: Icon(Icons.key, color: Color(0xFF000000)),
+            label: Text("Reset password",
+                style: TextStyle(
+                    color: Color(0xFF000000), fontWeight: FontWeight.bold)),
+            style: ElevatedButton.styleFrom(
+              side: BorderSide(color: Color(0xFF000000)),
+              primary: Color(0xFFE6E6E6),
             ),
-          )),
+          ),
+        ),
+      )),
     );
   }
 }

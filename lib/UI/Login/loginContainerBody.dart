@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:speeddatingapp/Classes/classSizeConfig.dart';
-import 'package:speeddatingapp/Classes/classDefineColor.dart';
+import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
+import 'package:speeddatingapp/domain/entities/classDefineColor.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:speeddatingapp/UI/Registration//registrationMain.dart';
 
@@ -16,12 +16,20 @@ class LabelLogin extends StatelessWidget {
     return Expanded(
       child: Container(
         height: SizeConfig.blockSizeVertical * 6,
-        decoration: const BoxDecoration(border: Border(bottom: BorderSide(width: 1.5))),
+        decoration:
+            const BoxDecoration(border: Border(bottom: BorderSide(width: 1.5))),
         child: Padding(
-          padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical, left: SizeConfig.blockSizeHorizontal * 3),
+          padding: EdgeInsets.only(
+              top: SizeConfig.blockSizeVertical,
+              left: SizeConfig.blockSizeHorizontal * 3),
           child: Text("Log in",
               style: TextStyle(
-                  shadows: const [Shadow(color: Color(0xFF000000), offset: Offset(-1, 1), blurRadius: 3)],
+                  shadows: const [
+                    Shadow(
+                        color: Color(0xFF000000),
+                        offset: Offset(-1, 1),
+                        blurRadius: 3)
+                  ],
                   fontWeight: FontWeight.w900,
                   color: const Color(0xFFAAC3FF),
                   fontSize: 3 * SizeConfig.blockSizeVertical)),
@@ -40,19 +48,33 @@ class LabelUsernamePassword extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3, left: SizeConfig.blockSizeHorizontal * 3),
+          padding: EdgeInsets.only(
+              top: SizeConfig.blockSizeVertical * 3,
+              left: SizeConfig.blockSizeHorizontal * 3),
           child: Text("Username:",
               style: TextStyle(
-                  shadows: const [Shadow(color: Color(0xFF000000), offset: Offset(-1, 1), blurRadius: 1)],
+                  shadows: const [
+                    Shadow(
+                        color: Color(0xFF000000),
+                        offset: Offset(-1, 1),
+                        blurRadius: 1)
+                  ],
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFFFFFFFF),
                   fontSize: 2 * SizeConfig.blockSizeVertical)),
         ),
         Padding(
-          padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3, left: SizeConfig.blockSizeHorizontal * 3),
+          padding: EdgeInsets.only(
+              top: SizeConfig.blockSizeVertical * 3,
+              left: SizeConfig.blockSizeHorizontal * 3),
           child: Text("Password:",
               style: TextStyle(
-                  shadows: const [Shadow(color: Color(0xFF000000), offset: Offset(-1, 1), blurRadius: 1)],
+                  shadows: const [
+                    Shadow(
+                        color: Color(0xFF000000),
+                        offset: Offset(-1, 1),
+                        blurRadius: 1)
+                  ],
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFFFFFFFF),
                   fontSize: 2 * SizeConfig.blockSizeVertical)),
@@ -77,13 +99,17 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 3, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 3,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -106,16 +132,20 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
               ),
               floatingLabelStyle: TextStyle(
-                color: floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                color: floatingLabelColor = _focusTextfield.hasFocus
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF000000),
                 fontWeight: FontWeight.bold,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -143,14 +173,18 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
       });
     });
 
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -166,7 +200,9 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
               suffixIcon: IconButton(
                 alignment: Alignment.centerRight,
                 iconSize: SizeConfig.blockSizeVertical * 2.75,
-                icon: Icon(_passwordObscured ? Icons.visibility_off : Icons.visibility, color: const Color(0xFF000000)),
+                icon: Icon(
+                    _passwordObscured ? Icons.visibility_off : Icons.visibility,
+                    color: const Color(0xFF000000)),
                 onPressed: () {
                   setState(() {
                     if (_passwordObscured == false) {
@@ -188,16 +224,20 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
               ),
               floatingLabelStyle: TextStyle(
-                color: floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000),
+                color: floatingLabelColor = _focusTextfield.hasFocus
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF000000),
                 fontWeight: FontWeight.bold,
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -227,7 +267,11 @@ class ButtonLogin extends StatelessWidget {
           child: Container(
             height: SizeConfig.blockSizeVertical * 6,
             width: SizeConfig.blockSizeHorizontal * 60,
-            child: Center(child: Text("Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 3 * SizeConfig.blockSizeVertical))),
+            child: Center(
+                child: Text("Login",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 3 * SizeConfig.blockSizeVertical))),
             decoration: BoxDecoration(
               color: const Color(0xFFE6E6E6),
               border: Border.all(),
@@ -257,7 +301,8 @@ class _LabelNewAccountState extends State<LabelNewAccount> {
         padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4),
         child: Column(children: [
           Container(
-            decoration: const BoxDecoration(border: Border(top: BorderSide(width: 1.5))),
+            decoration: const BoxDecoration(
+                border: Border(top: BorderSide(width: 1.5))),
           ),
           Padding(
             padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4.5),
@@ -282,12 +327,18 @@ class _LabelNewAccountState extends State<LabelNewAccount> {
                         });
                       });
                     },
-                    style: const ButtonStyle(splashFactory: NoSplash.splashFactory, enableFeedback: false),
+                    style: const ButtonStyle(
+                        splashFactory: NoSplash.splashFactory,
+                        enableFeedback: false),
                     child: AnimatedContainer(
                       duration: const Duration(microseconds: 0),
                       child: Text("Create new account",
                           style: TextStyle(
-                              shadows: [Shadow(color: useColor, offset: const Offset(0, -3))],
+                              shadows: [
+                                Shadow(
+                                    color: useColor,
+                                    offset: const Offset(0, -3))
+                              ],
                               color: Colors.transparent,
                               decoration: TextDecoration.underline,
                               decorationColor: useColor,
@@ -341,7 +392,8 @@ class _LabelForgotPasswordState extends State<LabelForgotPassword> {
                   });
                 });
               },
-              style: const ButtonStyle(splashFactory: NoSplash.splashFactory, enableFeedback: false),
+              style: const ButtonStyle(
+                  splashFactory: NoSplash.splashFactory, enableFeedback: false),
               child: AnimatedContainer(
                 duration: const Duration(microseconds: 0),
                 child: Text(

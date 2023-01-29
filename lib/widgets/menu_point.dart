@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
-import '../Classes/classSizeConfig.dart';
-
+import '../domain/entities/classSizeConfig.dart';
 
 class NewPadding extends StatelessWidget {
   final String image1;

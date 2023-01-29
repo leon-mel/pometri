@@ -4,9 +4,9 @@ import 'package:speeddatingapp/UI/PasswordReset/ForgotPassword/forgotPasswordMai
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/UI/Registration/TermsOfServicePopUp/termsOfService.dart';
 import 'package:speeddatingapp/UI/Registration/registrationMain.dart';
-import '../UI/Options/Optionmenu.dart';
-import '../homemenu/landingPage.dart';
-import '../navigator/profileScreen.dart';
+import '../../UI/Options/Optionmenu.dart';
+import '../../homemenu/landingPage.dart';
+import '../../navigator/profileScreen.dart';
 
 getRoutes() {
   return {

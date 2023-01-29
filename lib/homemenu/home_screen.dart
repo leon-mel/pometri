@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 
-import '../Classes/classSizeConfig.dart';
+import '../domain/entities/classSizeConfig.dart';
 import '../UI/Options/Optionmenu.dart';
 import '../widgets/menu_point.dart';
 

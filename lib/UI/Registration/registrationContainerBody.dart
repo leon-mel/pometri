@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:speeddatingapp/Classes/classSizeConfig.dart';
+import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:intl/intl.dart';
-
 
 class TextFieldRegUsername extends StatefulWidget {
   const TextFieldRegUsername({Key? key}) : super(key: key);
@@ -21,16 +20,22 @@ class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_username != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 3, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 3,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -92,9 +97,13 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (passwordOne != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
@@ -102,7 +111,9 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -118,7 +129,9 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
               suffixIcon: IconButton(
                 alignment: Alignment.centerRight,
                 iconSize: SizeConfig.blockSizeVertical * 2.75,
-                icon: Icon(_passwordObscured ? Icons.visibility_off : Icons.visibility, color: const Color(0xFF000000)),
+                icon: Icon(
+                    _passwordObscured ? Icons.visibility_off : Icons.visibility,
+                    color: const Color(0xFF000000)),
                 onPressed: () {
                   setState(() {
                     if (_passwordObscured == false) {
@@ -145,11 +158,13 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -165,7 +180,8 @@ class TextFieldRegPasswordTwo extends StatefulWidget {
   const TextFieldRegPasswordTwo({Key? key}) : super(key: key);
 
   @override
-  State<TextFieldRegPasswordTwo> createState() => _TextFieldRegPasswordTwoState();
+  State<TextFieldRegPasswordTwo> createState() =>
+      _TextFieldRegPasswordTwoState();
 }
 
 class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
@@ -178,9 +194,13 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (passwordTwo != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
@@ -188,7 +208,9 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -204,7 +226,9 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
               suffixIcon: IconButton(
                 alignment: Alignment.centerRight,
                 iconSize: SizeConfig.blockSizeVertical * 2.75,
-                icon: Icon(_passwordObscured ? Icons.visibility_off : Icons.visibility, color: const Color(0xFF000000)),
+                icon: Icon(
+                    _passwordObscured ? Icons.visibility_off : Icons.visibility,
+                    color: const Color(0xFF000000)),
                 onPressed: () {
                   setState(() {
                     if (_passwordObscured == false) {
@@ -231,11 +255,13 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -263,16 +289,22 @@ class _TextFieldRegFirstNameState extends State<TextFieldRegFirstName> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_firstName != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 4, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 4,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -300,11 +332,13 @@ class _TextFieldRegFirstNameState extends State<TextFieldRegFirstName> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -332,16 +366,22 @@ class _TextFieldRegLastNameState extends State<TextFieldRegLastName> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_lastName != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -369,11 +409,13 @@ class _TextFieldRegLastNameState extends State<TextFieldRegLastName> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -403,22 +445,31 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_date2 != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             onTap: () async {
-              DateTime? pickedDate =
-                  await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1900), lastDate: DateTime.now());
+              DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime.now());
               if (pickedDate == null) {
                 FocusScope.of(context).requestFocus(new FocusNode());
                 return;
@@ -451,11 +502,13 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -466,50 +519,61 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
   }
 }
 
-
 class DropDownButtonRegGender extends StatefulWidget {
   const DropDownButtonRegGender({Key? key}) : super(key: key);
 
   @override
-  State<DropDownButtonRegGender> createState() => _DropDownButtonRegGenderState();
+  State<DropDownButtonRegGender> createState() =>
+      _DropDownButtonRegGenderState();
 }
 
 class _DropDownButtonRegGenderState extends State<DropDownButtonRegGender> {
   String? _hintValue;
   String dropdownValue = 'Male';
 
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           decoration: BoxDecoration(
-              color: Color(0xFF666666), border: Border.all(color: Color(0xFF000000), width: 1), borderRadius: BorderRadius.circular(12)),
+              color: Color(0xFF666666),
+              border: Border.all(color: Color(0xFF000000), width: 1),
+              borderRadius: BorderRadius.circular(12)),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               hint: Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 3),
-                child: Text("Gender", style: TextStyle(color: Color(0xFF000000), fontWeight: FontWeight.bold, fontSize: 1.75 * SizeConfig.blockSizeVertical)),
+                padding:
+                    EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
+                child: Text("Gender",
+                    style: TextStyle(
+                        color: Color(0xFF000000),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 1.75 * SizeConfig.blockSizeVertical)),
               ),
               value: _hintValue,
               style: const TextStyle(color: Color(0xFF000000)),
               onChanged: (String? newValue) {
                 setState(() {
-                  _hintValue = newValue?? "";
+                  _hintValue = newValue ?? "";
                 });
               },
-              items: <String>['Male', 'Female', 'Miscellaneous'].map<DropdownMenuItem<String>>((String value) {
+              items: <String>['Male', 'Female', 'Miscellaneous']
+                  .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: SizeConfig.blockSizeHorizontal * 3),
-                    child: Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 1.75 * SizeConfig.blockSizeVertical)),
+                    child: Text(value,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 1.75 * SizeConfig.blockSizeVertical)),
                   ),
                 );
               }).toList(),
@@ -520,7 +584,6 @@ class _DropDownButtonRegGenderState extends State<DropDownButtonRegGender> {
     );
   }
 }
-
 
 class TextFieldRegMail extends StatefulWidget {
   const TextFieldRegMail({Key? key}) : super(key: key);
@@ -538,16 +601,22 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_mail != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 4, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 4,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -575,11 +644,13 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -590,9 +661,6 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
     );
   }
 }
-
-
-
 
 class TextFieldRegMobNumber extends StatefulWidget {
   const TextFieldRegMobNumber({Key? key}) : super(key: key);
@@ -610,16 +678,22 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_mobNumber != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -647,11 +721,13 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -663,13 +739,12 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
   }
 }
 
-
-
 class TextFieldRegStreetAddress extends StatefulWidget {
   const TextFieldRegStreetAddress({Key? key}) : super(key: key);
 
   @override
-  State<TextFieldRegStreetAddress> createState() => _TextFieldRegStreetAddressState();
+  State<TextFieldRegStreetAddress> createState() =>
+      _TextFieldRegStreetAddressState();
 }
 
 class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
@@ -681,16 +756,22 @@ class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_streetAddress != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -718,11 +799,13 @@ class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -738,7 +821,8 @@ class TextFieldRegAddressNumber extends StatefulWidget {
   const TextFieldRegAddressNumber({Key? key}) : super(key: key);
 
   @override
-  State<TextFieldRegAddressNumber> createState() => _TextFieldRegAddressNumberState();
+  State<TextFieldRegAddressNumber> createState() =>
+      _TextFieldRegAddressNumberState();
 }
 
 class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
@@ -750,16 +834,22 @@ class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_addressNumber != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -787,11 +877,13 @@ class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -819,16 +911,22 @@ class _TextFieldRegCityState extends State<TextFieldRegCity> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_city != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -856,11 +954,13 @@ class _TextFieldRegCityState extends State<TextFieldRegCity> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -888,16 +988,22 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_city != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -925,11 +1031,13 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -940,7 +1048,6 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
     );
   }
 }
-
 
 class TextFieldRegCountry extends StatefulWidget {
   const TextFieldRegCountry({Key? key}) : super(key: key);
@@ -958,16 +1065,22 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
   Widget build(BuildContext context) {
     _focusTextfield.addListener(() {
       setState(() {
-        floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF000000);
         if (_country != null) {
-          floatingLabelColor = _focusTextfield.hasFocus ? const Color(0xFFFFFFFF) : const Color(0xFF7FFFAB);
+          floatingLabelColor = _focusTextfield.hasFocus
+              ? const Color(0xFFFFFFFF)
+              : const Color(0xFF7FFFAB);
         }
       });
     });
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(
-            top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 3, right: SizeConfig.blockSizeHorizontal * 3),
+            top: SizeConfig.blockSizeVertical * 2,
+            left: SizeConfig.blockSizeHorizontal * 3,
+            right: SizeConfig.blockSizeHorizontal * 3),
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
@@ -995,11 +1108,13 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide:
+                    const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide:
+                    const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -1011,7 +1126,6 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
   }
 }
 
-
 class ButtonRegTermsOfService extends StatelessWidget {
   const ButtonRegTermsOfService({Key? key}) : super(key: key);
 
@@ -1019,57 +1133,59 @@ class ButtonRegTermsOfService extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 3, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+          top: SizeConfig.blockSizeVertical * 3,
+          left: SizeConfig.blockSizeHorizontal * 5,
+          right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
           child: Container(
-            height: SizeConfig.blockSizeVertical * 5,
-            width: SizeConfig.blockSizeHorizontal * 50,
-            child: ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: const Text('Datenschutzerklärung'),
-                    content: const SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12.0,
-                          fontFamily: 'Roboto',
-                          letterSpacing: 3,
-                          wordSpacing: 3,
-                        ),
-                      ),
+        height: SizeConfig.blockSizeVertical * 5,
+        width: SizeConfig.blockSizeHorizontal * 50,
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: const Text('Datenschutzerklärung'),
+                content: const SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12.0,
+                      fontFamily: 'Roboto',
+                      letterSpacing: 3,
+                      wordSpacing: 3,
                     ),
-                    actions:  [
-                      TextButton(
-                        child: const Text(
-                            'Annehmen',style: TextStyle(color: Colors.green)
-                        ),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                      TextButton(
-                        child: const Text(
-                            'Ablehnen',style: TextStyle(color: Colors.red)
-                        ),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
                   ),
-                );
-              },
-              child: Text("Terms of Service", style: TextStyle(color: Color(0xFF000000),fontWeight: FontWeight.bold)),
-              style: ElevatedButton.styleFrom(
-                side: BorderSide(color: Color(0xFF000000)),
-                primary: Color(0xFFE6E6E6),
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text('Annehmen',
+                        style: TextStyle(color: Colors.green)),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  TextButton(
+                    child: const Text('Ablehnen',
+                        style: TextStyle(color: Colors.red)),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
               ),
-            ),
-          )),
+            );
+          },
+          child: Text("Terms of Service",
+              style: TextStyle(
+                  color: Color(0xFF000000), fontWeight: FontWeight.bold)),
+          style: ElevatedButton.styleFrom(
+            side: BorderSide(color: Color(0xFF000000)),
+            primary: Color(0xFFE6E6E6),
+          ),
+        ),
+      )),
     );
   }
 }
-
 
 class RegistrationButton extends StatelessWidget {
   const RegistrationButton({Key? key}) : super(key: key);
@@ -1078,40 +1194,41 @@ class RegistrationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+          top: SizeConfig.blockSizeVertical * 2,
+          left: SizeConfig.blockSizeHorizontal * 5,
+          right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
           child: Container(
-            height: SizeConfig.blockSizeVertical * 5,
-            width: SizeConfig.blockSizeHorizontal * 50,
-            child: ElevatedButton(
+        height: SizeConfig.blockSizeVertical * 5,
+        width: SizeConfig.blockSizeHorizontal * 50,
+        child: ElevatedButton(
+          onPressed: () {
+            Widget okButton = TextButton(
+              child: Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
               onPressed: () {
-                Widget okButton = TextButton(
-                  child: Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                );
-                AlertDialog alert = AlertDialog(
-                    title: Text("Notification"),
-                    content: Text("Your account creation was successful."),
-                    actions: [
-                      okButton
-                    ]
-                );
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return alert;
-                  },
-                );
+                Navigator.pop(context);
               },
-              child: Text("Create Account", style: TextStyle(color: Color(0xFF000000),fontWeight: FontWeight.bold)),
-              style: ElevatedButton.styleFrom(
-                side: BorderSide(color: Color(0xFF000000)),
-                primary: Color(0xFFE6E6E6),
-              ),
-            ),
-          )),
+            );
+            AlertDialog alert = AlertDialog(
+                title: Text("Notification"),
+                content: Text("Your account creation was successful."),
+                actions: [okButton]);
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return alert;
+              },
+            );
+          },
+          child: Text("Create Account",
+              style: TextStyle(
+                  color: Color(0xFF000000), fontWeight: FontWeight.bold)),
+          style: ElevatedButton.styleFrom(
+            side: BorderSide(color: Color(0xFF000000)),
+            primary: Color(0xFFE6E6E6),
+          ),
+        ),
+      )),
     );
   }
 }
@@ -1123,22 +1240,26 @@ class ReturnToLoginRegButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.blockSizeVertical * 2, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+          top: SizeConfig.blockSizeVertical * 2,
+          left: SizeConfig.blockSizeHorizontal * 5,
+          right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
           child: Container(
-            height: SizeConfig.blockSizeVertical * 5,
-            width: SizeConfig.blockSizeHorizontal * 50,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Back to Login", style: TextStyle(color: Color(0xFF000000),fontWeight: FontWeight.bold)),
-              style: ElevatedButton.styleFrom(
-                side: BorderSide(color: Color(0xFF000000)),
-                primary: Color(0xFFE6E6E6),
-              ),
-            ),
-          )),
+        height: SizeConfig.blockSizeVertical * 5,
+        width: SizeConfig.blockSizeHorizontal * 50,
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Back to Login",
+              style: TextStyle(
+                  color: Color(0xFF000000), fontWeight: FontWeight.bold)),
+          style: ElevatedButton.styleFrom(
+            side: BorderSide(color: Color(0xFF000000)),
+            primary: Color(0xFFE6E6E6),
+          ),
+        ),
+      )),
     );
   }
 }

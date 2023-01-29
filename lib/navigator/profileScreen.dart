@@ -3,12 +3,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:speeddatingapp/Classes/classSizeConfig.dart';
+import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
   static String route = "ProfileScreen";
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProfileScreenBloc, ProfileScreenState>(
+      bloc: BlocProvider.of<ProfileScreenBloc>(context)
+        ..add(ProfileScreenLoadingEvent()),
+      builder: (context, state) {
+        if (state is ProfileScreenLoading) {
+          return const SizedBox(
+            height: 20,
+            width: 20,
+            child: CircularProgressIndicator(
+              color: Colors.amber,
+            ),
+          );
+        } else if (state is ProfileScreenLoaded) {
+          return ProfileShowCase(
+            userAboutMe: state.user.uAboutMe,
+            userAge: state.user.uAge,
+            userLocation: state.user.uLocation,
+            userName: state.user.uName,
+          );
+        }
+        return const Placeholder();
+      },
+    );
+  }
+}
+
+class ProfileShowCase extends StatelessWidget {
+  final userName;
+  final userAge;
+  final userLocation;
+  final userAboutMe;
+  const ProfileShowCase({
+    Key? key,
+    required this.userName,
+    required this.userAge,
+    required this.userLocation,
+    required this.userAboutMe,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +114,14 @@ class ProfileScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      "Agnes, ",
+                      userName + ", ",
                       style: TextStyle(
                           fontSize: 26,
                           decoration: TextDecoration.none,
                           color: Colors.grey[500]),
                     ),
                     Text(
-                      "27",
+                      userAge.toString(),
                       style: TextStyle(
                           fontSize: 26,
                           decoration: TextDecoration.none,
@@ -99,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
                       size: 16,
                     ),
                     Text(
-                      "City ",
+                      userLocation + ", ",
                       style: TextStyle(
                           fontSize: 14,
                           decoration: TextDecoration.none,
@@ -130,7 +173,7 @@ class ProfileScreen extends StatelessWidget {
                     left: SizeConfig.blockSizeHorizontal * 5,
                     top: SizeConfig.blockSizeHorizontal * 2),
                 child: Text(
-                  "Hi I'm a professional graphic designer, who likes hiking and hanging around. Searching for new friends",
+                  userAboutMe,
                   style: TextStyle(
                       fontSize: 14,
                       decoration: TextDecoration.none,

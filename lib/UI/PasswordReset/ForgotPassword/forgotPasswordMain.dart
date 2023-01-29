@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:speeddatingapp/Classes/classSizeConfig.dart';
+import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'forgotPasswordContainerBody.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -10,21 +10,27 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF666666),
-          title: Text("Password recovery", style: TextStyle(color: Color(0xFFFFFFFF), fontSize: SizeConfig.blockSizeVertical * 3)),
-          elevation: 16,
-        ),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF666666),
+        title: Text("Password recovery",
+            style: TextStyle(
+                color: Color(0xFFFFFFFF),
+                fontSize: SizeConfig.blockSizeVertical * 3)),
+        elevation: 16,
+      ),
       body: Material(
-
         child: Padding(
           padding: EdgeInsets.only(
-              top: SizeConfig.blockSizeVertical * 5, left: SizeConfig.blockSizeHorizontal * 5, right: SizeConfig.blockSizeHorizontal * 5),
+              top: SizeConfig.blockSizeVertical * 5,
+              left: SizeConfig.blockSizeHorizontal * 5,
+              right: SizeConfig.blockSizeHorizontal * 5),
           child: Container(
             height: SizeConfig.blockSizeVertical * 25,
             width: SizeConfig.blockSizeHorizontal * 90,
             decoration: BoxDecoration(
-                color: Color(0xFF666666), border: Border.all(color: Color(0xFF000000), width: 1.5), borderRadius: BorderRadius.circular(12)),
+                color: Color(0xFF666666),
+                border: Border.all(color: Color(0xFF000000), width: 1.5),
+                borderRadius: BorderRadius.circular(12)),
             child: Column(
               children: [
                 Row(
@@ -32,12 +38,14 @@ class ForgotPassword extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [ResetPassword(),
+                  children: [
+                    ResetPassword(),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [ReturnToLogin(),
+                  children: [
+                    ReturnToLogin(),
                   ],
                 ),
               ],
@@ -45,9 +53,6 @@ class ForgotPassword extends StatelessWidget {
           ),
         ),
       ),
-    )    ;
-
-
+    );
   }
 }
-
