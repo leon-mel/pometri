@@ -11,3 +11,9 @@ class ProfileScreenLoaded extends ProfileScreenState {
   final User user;
   ProfileScreenLoaded({required this.user});
 }
+
+class ProfileScreenError extends ProfileScreenState {
+  final String message;
+
+  ProfileScreenError({required this.message});
+}

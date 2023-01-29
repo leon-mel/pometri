@@ -34,9 +34,26 @@ class ProfileScreen extends StatelessWidget {
             userName: state.user.uName,
             userInterest: state.user.uInterest,
           );
+        } else if (state is ProfileScreenError) {
+          return ErrorMessage(message: state.message);
         }
         return const Placeholder();
       },
+    );
+  }
+}
+
+class ErrorMessage extends StatelessWidget {
+  final String message;
+  const ErrorMessage({
+    Key? key,
+    required this.message,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [Icon(Icons.warning), Text(message)],
     );
   }
 }
