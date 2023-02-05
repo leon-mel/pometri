@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "400298829250",
+    "project_id": "pometri-6d7fe",
+    "storage_bucket": "pometri-6d7fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400298829250:android:d864abc30eb4afc050a25b",
+        "android_client_info": {
+          "package_name": "com.fompraxisprojektspeeddatingapp.speeddatingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400298829250-mt58o1eiqn358tvt24qt2ue24uno3qc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjYBR63wGii3SfsbDzClHeEca20-LQ8Us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400298829250-mt58o1eiqn358tvt24qt2ue24uno3qc1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "400298829250-pmnhh86k42k0j5j2nv3slt7ocprnh2sl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fompraxisprojektspeeddatingapp.speeddatingapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
