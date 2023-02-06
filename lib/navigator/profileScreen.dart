@@ -53,7 +53,17 @@ class ErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Icon(Icons.warning), Text(message)],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        
+        Icon(Icons.warning, size: 50, color: Colors.white,),
+        Center(
+          child: Text(
+            message,
+            style: TextStyle(decoration: TextDecoration.none, fontSize: 22),
+          ),
+        )
+      ],
     );
   }
 }
