@@ -55,13 +55,14 @@ class ErrorMessage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        
-        Icon(Icons.warning, size: 50, color: Colors.white,),
-        Center(
-          child: Text(
-            message,
-            style: TextStyle(decoration: TextDecoration.none, fontSize: 22),
-          ),
+        const Icon(
+          Icons.warning,
+          size: 50,
+          color: Colors.white,
+        ),
+        Text(
+          message,
+          style: const TextStyle(decoration: TextDecoration.none, fontSize: 22),
         )
       ],
     );
