@@ -4,71 +4,34 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
-import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
-import 'package:speeddatingapp/homemenu/navbar_items.dart';
-import 'package:speeddatingapp/navigator/profileScreen.dart';
 
-int _selectedIndex = 0;
+import 'cubit/bloc/home_bloc.dart';
 
 class HomeScreenNew extends StatelessWidget {
   const HomeScreenNew({Key? key}) : super(key: key);
 
-  void _onTappedItem(index) {
-    _selectedIndex = index;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar:
-          BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
-        builder: (context, state) {
-          return BottomNavigationBar(
-            currentIndex: state.selectedIndex,
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: "Profile"),
-              BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: "Settings"),
-            ],
-            onTap:
-                // select different BottomNavigationBarItems
-                (index) {
-              if (index == 0) {
-                BlocProvider.of<BottomNavigationCubit>(context)
-                    .getNavBar(NavbarItem.home);
-              } else if (index == 1) {
-                BlocProvider.of<BottomNavigationCubit>(context)
-                    .getNavBar(NavbarItem.profile);
-              } else if (index == 2) {
-                BlocProvider.of<BottomNavigationCubit>(context)
-                    .getNavBar(NavbarItem.chat);
-              } else if (index == 3) {
-                BlocProvider.of<BottomNavigationCubit>(context)
-                    .getNavBar(NavbarItem.settings);
-              }
-            },
-          );
-        },
-      ),
-      body: BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
-        builder: (context, state) {
-          if (state.navbarItem == NavbarItem.home) {
-            return const Placeholder();
-          } else if (state.navbarItem == NavbarItem.profile) {
-            return const ProfileScreen();
-          } else if (state.navbarItem == NavbarItem.chat) {
-            return const Placeholder();
-          } else if (state.navbarItem == NavbarItem.settings) {
-            return const SettingPage();
-          }
-          return Container();
-        },
-      ),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25)),
+                  child: Image.asset(
+                    'assets/user.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            )
+          ],
+        );
+      },
     );
   }
 }

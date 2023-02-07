@@ -2,8 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
+import 'package:speeddatingapp/homemenu/cubit/bloc/home_bloc.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
-import 'package:speeddatingapp/homemenu/home_screen_new.dart';
+import 'package:speeddatingapp/homemenu/navigation.dart';
 import 'package:speeddatingapp/injection.dart' as di;
 import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
 import 'package:speeddatingapp/navigator/profileScreen.dart';
@@ -33,8 +34,11 @@ class SpeedDatingApp extends StatelessWidget {
               create: (BuildContext context) => ProfileScreenBloc(),
             ),
             BlocProvider<BottomNavigationCubit>(
-                create: (BuildContext context) => BottomNavigationCubit())
-          ], child: const HomeScreenNew());
+                create: (BuildContext context) => BottomNavigationCubit()),
+            BlocProvider<HomeBloc>(
+              create: (BuildContext context) => HomeBloc(),
+            )
+          ], child: const NavigationScreen());
         },
       ),
       routes: getRoutes(),
