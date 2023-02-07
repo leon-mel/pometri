@@ -14,7 +14,6 @@ class UserUsecases {
   Future<Either<Failure, User>> getUserUsecase() async {
     await sleep();
 
-    return left(ServerFailure());
-   
+    return right(User("Agnes", "Kill me", "Bochum", 27, ["Vegan","Hiking", "Chilling"]));
   }
 }

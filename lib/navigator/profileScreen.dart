@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
         } else if (state is ProfileScreenError) {
           return ErrorMessage(message: state.message);
         }
-        return const Placeholder();
+        return Container(color: Colors.amber,);
       },
     );
   }
