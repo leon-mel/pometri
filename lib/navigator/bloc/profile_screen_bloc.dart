@@ -36,5 +36,6 @@ class ProfileScreenBloc extends Bloc<ProfileScreenEvent, ProfileScreenState> {
       default:
         "Ups, something went wrong! Please try again.";
     }
+    return null;
   }
 }
