@@ -38,7 +38,7 @@ class HomeScreenNew extends StatelessWidget {
                           radius: 30,
                           backgroundImage: AssetImage("assets/user.png")),
                     ),
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -112,15 +112,15 @@ class HomeScreenNew extends StatelessWidget {
                                     blurRadius: 3)
                               ]),
                           child: Text(
-                            "Looking for Adventures",
+                            "Looking for Adventures 😊",
                             style:
                                 TextStyle(color: Colors.white.withOpacity(0.8)),
                           )),
                     ),
                     Positioned(
                       top: SizeConfig.safeBlockVertical * 45,
-                      left: SizeConfig.safeBlockHorizontal * 6,
-                      child: Align(
+                      left: SizeConfig.safeBlockHorizontal * 5,
+                      child: const Align(
                         alignment: Alignment.bottomLeft,
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,22 +130,72 @@ class HomeScreenNew extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Bochum, 40km",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
-                                  ),
-                                  Icon(
-                                    Icons.location_on,
-                                    color: Colors.white,
-                                  )
-                                ],
+                              Text(
+                                "Bochum, 40km 🌍",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                              Text(
+                                "Vegan, Hiking, Gaming",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
                               )
                             ]),
                       ),
                     )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 50,
+                    ),
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 3,
+                                offset: const Offset(0, 3),
+                                color: Colors.grey[600]!.withOpacity(0.6))
+                          ]),
+                      child: const Center(
+                          child: Text(
+                        "👎",
+                        style: TextStyle(fontSize: 32),
+                      )),
+                    ),
+                    const SizedBox(
+                      width: 80,
+                    ),
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 3,
+                                offset: const Offset(0, 3),
+                                color: Colors.grey[600]!.withOpacity(0.6))
+                          ]),
+                      child: const Center(
+                          child: Text(
+                        "👍",
+                        style: TextStyle(fontSize: 32),
+                      )),
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
                   ],
                 ),
               )
