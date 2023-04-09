@@ -133,17 +133,17 @@ class HomeScreenNew extends StatelessWidget {
                               children: [
                                 Text(
                                   state.user.uName!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
                                 Text(
                                   state.user.uLocation! + ", 40km 🌍",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 16),
                                 ),
                                 Text(
                                   state.user.uInterest!.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
                               ]),
