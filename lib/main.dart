@@ -19,7 +19,6 @@ Future main() async {
   await Firebase.initializeApp();
   await di.init();
   runApp(const SpeedDatingApp());
-  
 }
 
 class SpeedDatingApp extends StatelessWidget {
@@ -27,7 +26,6 @@ class SpeedDatingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().initState(context);
     return MultiBlocProvider(
         providers: [
           BlocProvider<ProfileScreenBloc>(
@@ -41,12 +39,16 @@ class SpeedDatingApp extends StatelessWidget {
           BlocProvider<WelcomeBloc>(
               create: (BuildContext context) => WelcomeBloc())
         ],
-        child: MaterialApp(
-          
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(fontFamily: 'Roboto'),
-          home: Login(),
-          routes: getRoutes(),
+        child: Builder(
+          builder: (BuildContext context) {
+            SizeConfig().initState(context);
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(fontFamily: 'Roboto'),
+              home: Login(),
+              routes: getRoutes(),
+            );
+          }
         ));
 
     //});
