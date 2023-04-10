@@ -32,25 +32,23 @@ class SpeedDatingApp extends StatelessWidget {
             create: (BuildContext context) => ProfileScreenBloc(),
           ),
           BlocProvider<BottomNavigationCubit>(
-              create: (BuildContext context) => BottomNavigationCubit()),
+            create: (BuildContext context) => BottomNavigationCubit()
+          ),
           BlocProvider<HomeBloc>(
             create: (BuildContext context) => HomeBloc(),
           ),
-          BlocProvider<WelcomeBloc>(
-              create: (BuildContext context) => WelcomeBloc())
+          BlocProvider<WelcomeBloc>(create: (BuildContext context) => WelcomeBloc())
         ],
-        child: Builder(
-          builder: (BuildContext context) {
-            SizeConfig().initState(context);
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(fontFamily: 'Roboto'),
-              home: Login(),
-              routes: getRoutes(),
-            );
-          }
-        ));
-
-    //});
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(fontFamily: 'Roboto'),
+            home: Builder(
+              builder: (BuildContext context) {
+                SizeConfig().initState(context);
+                return const Login();
+              },
+            ),routes: getRoutes(),
+        )
+    );
   }
 }
