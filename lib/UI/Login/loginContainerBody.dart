@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/domain/entities/classDefineColor.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -261,7 +262,7 @@ class ButtonLogin extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         child: Bounce(
           onPressed: () {
-            Navigator.popAndPushNamed(context, LandingPage.route);
+            Navigator.popAndPushNamed(context, WelcomePage.route);
           },
           duration: const Duration(milliseconds: 125),
           child: Container(

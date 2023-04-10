@@ -15,6 +15,8 @@ int _selectedIndex = 0;
 class NavigationScreen extends StatelessWidget {
   const NavigationScreen({Key? key}) : super(key: key);
 
+  static String route = "Navigator";
+
   void _onTappedItem(index) {
     _selectedIndex = index;
   }

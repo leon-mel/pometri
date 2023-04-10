@@ -10,6 +10,8 @@ import 'cubit/bloc/home_bloc.dart';
 
 class HomeScreenNew extends StatelessWidget {
   const HomeScreenNew({Key? key}) : super(key: key);
+  
+  static String route = "HomeScreenNew";
 
   @override
   Widget build(BuildContext context) {

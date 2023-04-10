@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
@@ -39,7 +40,7 @@ class SpeedDatingApp extends StatelessWidget {
             BlocProvider<HomeBloc>(
               create: (BuildContext context) => HomeBloc(),
             )
-          ], child:  WelcomePage());
+          ], child:  Login());
         },
       ),
       routes: getRoutes(),
