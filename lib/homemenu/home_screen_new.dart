@@ -46,7 +46,7 @@ class HomeScreenNew extends StatelessWidget {
                             radius: 30,
                             backgroundImage: AssetImage("assets/user.png")),
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(

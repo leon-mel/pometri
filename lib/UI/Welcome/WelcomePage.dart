@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePages/Welcome_1.dart';
@@ -18,8 +19,9 @@ class WelcomePage extends StatelessWidget {
       body: Stack(
         children: [
           PageView(
+            physics: const ClampingScrollPhysics(),
             controller: _controller,
-            children: [
+            children: const [
               WelcomeOne(),
               WelcomeTwo(),
               WelcomeThree(),
@@ -27,7 +29,7 @@ class WelcomePage extends StatelessWidget {
             ],
           ),
           Container(
-            alignment: Alignment(0, 0.75),
+            alignment: const Alignment(0, 0.75),
             child: SmoothPageIndicator(
               controller: _controller,
               count: 4,
@@ -35,16 +37,10 @@ class WelcomePage extends StatelessWidget {
           ),
           Container(
             alignment: Alignment(0, 0.90),
-            child: MaterialButton(
-              color: Colors.black38,
-              onPressed: () => Navigator.popAndPushNamed(context, NavigationScreen.route) ,
-              child: Text(
-                "Get me in",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey[200]),
-              ),
+            child: CupertinoButton(
+              color: Colors.grey[700],
+              child: Text("Get me in !"),
+              onPressed: () => Navigator.popAndPushNamed(context, NavigationScreen.route),
             ),
           )
         ],
