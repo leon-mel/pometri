@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
+import 'package:speeddatingapp/UI/Welcome/bloc/welcome_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/cubit/bloc/home_bloc.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
@@ -18,6 +19,7 @@ Future main() async {
   await Firebase.initializeApp();
   await di.init();
   runApp(const SpeedDatingApp());
+  
 }
 
 class SpeedDatingApp extends StatelessWidget {
@@ -25,26 +27,28 @@ class SpeedDatingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Roboto'),
-      home: Builder(
-        builder: (BuildContext context) {
-          SizeConfig().initState(context);
-          return MultiBlocProvider(providers: [
-            BlocProvider<ProfileScreenBloc>(
-              create: (BuildContext context) => ProfileScreenBloc(),
-            ),
-            BlocProvider<BottomNavigationCubit>(
-                create: (BuildContext context) => BottomNavigationCubit()),
-            BlocProvider<HomeBloc>(
-              create: (BuildContext context) => HomeBloc(),
-            )
-          ], child:  Login());
-        },
-      ),
-      routes: getRoutes(),
-    );
+    SizeConfig().initState(context);
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<ProfileScreenBloc>(
+            create: (BuildContext context) => ProfileScreenBloc(),
+          ),
+          BlocProvider<BottomNavigationCubit>(
+              create: (BuildContext context) => BottomNavigationCubit()),
+          BlocProvider<HomeBloc>(
+            create: (BuildContext context) => HomeBloc(),
+          ),
+          BlocProvider<WelcomeBloc>(
+              create: (BuildContext context) => WelcomeBloc())
+        ],
+        child: MaterialApp(
+          
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: 'Roboto'),
+          home: Login(),
+          routes: getRoutes(),
+        ));
+
     //});
   }
 }
