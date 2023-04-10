@@ -25,6 +25,6 @@ getRoutes() {
     SettingPage.route: (context) => const SettingPage(),
     Preferences.route: (context) => const Preferences(),
     NavigationScreen.route: (context) => const NavigationScreen(),
-    WelcomePage.route: (context) =>  WelcomePage()
+    WelcomePage.route: (context) => WelcomePage()
   };
 }
