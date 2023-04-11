@@ -7,6 +7,7 @@ import 'package:speeddatingapp/UI/Welcome/bloc/welcome_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/cubit/bloc/home_bloc.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
+import 'package:speeddatingapp/homemenu/decision.dart';
 import 'package:speeddatingapp/homemenu/navigation.dart';
 import 'package:speeddatingapp/injection.dart' as di;
 import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
@@ -32,23 +33,23 @@ class SpeedDatingApp extends StatelessWidget {
             create: (BuildContext context) => ProfileScreenBloc(),
           ),
           BlocProvider<BottomNavigationCubit>(
-            create: (BuildContext context) => BottomNavigationCubit()
-          ),
+              create: (BuildContext context) => BottomNavigationCubit()),
           BlocProvider<HomeBloc>(
             create: (BuildContext context) => HomeBloc(),
           ),
-          BlocProvider<WelcomeBloc>(create: (BuildContext context) => WelcomeBloc())
+          BlocProvider<WelcomeBloc>(
+              create: (BuildContext context) => WelcomeBloc())
         ],
         child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(fontFamily: 'Roboto'),
-            home: Builder(
-              builder: (BuildContext context) {
-                SizeConfig().initState(context);
-                return const Login();
-              },
-            ),routes: getRoutes(),
-        )
-    );
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: 'Roboto'),
+          home: Builder(
+            builder: (BuildContext context) {
+              SizeConfig().initState(context);
+              return const Login();
+            },
+          ),
+          routes: getRoutes(),
+        ));
   }
 }

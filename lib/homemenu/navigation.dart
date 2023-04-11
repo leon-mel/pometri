@@ -5,7 +5,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
+import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
+import 'package:speeddatingapp/homemenu/decision.dart';
 import 'package:speeddatingapp/homemenu/home_screen_new.dart';
 import 'package:speeddatingapp/homemenu/navbar_items.dart';
 import 'package:speeddatingapp/navigator/profileScreen.dart';
@@ -72,6 +74,10 @@ class NavigationScreen extends StatelessWidget {
           return Container();
         },
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.popAndPushNamed(context, DecisionPage.route);
+      }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
