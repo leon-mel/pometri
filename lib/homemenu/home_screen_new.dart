@@ -102,11 +102,16 @@ class HomeScreenNew extends StatelessWidget {
                               maxWidth: SizeConfig.blockSizeVertical * 50,
                               minHeight: SizeConfig.blockSizeVertical * 40),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              state.user[0].imageUrls[0],
-                            ),
-                          ),
+                              borderRadius: BorderRadius.circular(25),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                        image: AssetImage(
+                                  state.user[0].imageUrls[0],
+                                ))),
+                              )),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(35.0),
@@ -127,7 +132,7 @@ class HomeScreenNew extends StatelessWidget {
                               )),
                         ),
                         Positioned(
-                          top: SizeConfig.safeBlockVertical * 43,
+                          top: SizeConfig.safeBlockVertical * 58,
                           left: SizeConfig.safeBlockHorizontal * 5,
                           child: Align(
                             alignment: Alignment.bottomLeft,

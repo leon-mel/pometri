@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
+import 'package:speeddatingapp/UI/Swiping/bloc/swiping_bloc.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/UI/Welcome/bloc/welcome_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
+import 'package:speeddatingapp/domain/usecases/user_usecases.dart';
 import 'package:speeddatingapp/homemenu/cubit/bloc/home_bloc.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
@@ -23,11 +25,12 @@ Future main() async {
   runApp(const SpeedDatingApp());
 }
 
-class SpeedDatingApp extends StatelessWidget {
+class SpeedDatingApp extends StatelessWidget  {
+  
   const SpeedDatingApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)   {
     return MultiBlocProvider(
         providers: [
           BlocProvider<ProfileScreenBloc>(
@@ -39,7 +42,10 @@ class SpeedDatingApp extends StatelessWidget {
             create: (BuildContext context) => HomeBloc(),
           ),
           BlocProvider<WelcomeBloc>(
-              create: (BuildContext context) => WelcomeBloc())
+              create: (BuildContext context) => WelcomeBloc()),
+          BlocProvider<SwipingBloc>(
+              create: (BuildContext context) => SwipingBloc()
+                ..add(LoadUserEvent(users: UserUsecases().users)))
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
