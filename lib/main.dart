@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
+import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/UI/Welcome/bloc/welcome_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
@@ -46,7 +47,7 @@ class SpeedDatingApp extends StatelessWidget {
           home: Builder(
             builder: (BuildContext context) {
               SizeConfig().initState(context);
-              return const Login();
+              return const SwipingPage();
             },
           ),
           routes: getRoutes(),

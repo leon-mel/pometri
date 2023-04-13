@@ -1,11 +1,26 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class User {
-  String? uName;
-  String? uAboutMe;
-  String? uLocation;
-  int? uAge;
-  List<String>? uInterest;
+class User extends Equatable {
+  final int? id;
+  final String? uName;
+  final String? uAboutMe;
+  final String? uLocation;
+  
+  final int? uAge;
+  final List<String> uInterest;
+  final List<String> imageUrls;
 
-  User(this.uName, this.uAboutMe, this.uLocation, this.uAge, this.uInterest);
+  const User( {
+    required this.id,
+    required this.uName,
+    required this.uAboutMe,
+    required this.uLocation,
+    required this.uAge,
+    required this.uInterest,
+    required this.imageUrls});
+    
+      @override
+      // TODO: implement props
+    List<Object?> get props => [id, uName, uAboutMe, uAge, uLocation, uInterest, imageUrls];
 }

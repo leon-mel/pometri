@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:lottie/lottie.dart';
+import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/navigation.dart';
 
@@ -25,7 +26,8 @@ class DecisionPage extends StatelessWidget {
             },
             color: Colors.black,
             icon: Icon(Icons.arrow_back_ios),
-          )
+          ),
+          
         ]),
       ),
       body: Center(
@@ -70,7 +72,7 @@ class DecisionPage extends StatelessWidget {
           ),
           Bounce(
             duration: Duration(milliseconds: 120),
-            onPressed: () => null,
+            onPressed: () => Navigator.popAndPushNamed(context, SwipingPage.route),
             child: Container(
               height: SizeConfig.blockSizeVertical * 25,
               width: SizeConfig.blockSizeVertical * 40,

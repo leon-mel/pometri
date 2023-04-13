@@ -18,7 +18,7 @@ class ProfileScreenBloc extends Bloc<ProfileScreenEvent, ProfileScreenState> {
       emit(ProfileScreenLoading());
       await sleep1;
 
-      Either<Failure, User> userOrFailure = await usecases.getUserUsecase();
+      Either<Failure, List<User>> userOrFailure = await usecases.getUserUsecase();
 
       userOrFailure.fold(
           (l) => emit(ProfileScreenError(message: _mapFailureToMessage(l)!)),

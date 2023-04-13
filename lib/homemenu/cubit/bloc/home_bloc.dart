@@ -19,7 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       // TODO: implement event handler
       emit(HomeLoadingState());
       await sleep1;
-      Either<Failure, User> userOrFailure2 = await usecases.getUserUsecase2();
+      Either<Failure, List<User>> userOrFailure2 = await usecases.getUserUsecase();
 
       userOrFailure2.fold(
           (l) => emit(HomeError(message: _mapFailureToMessage2(l)!)),

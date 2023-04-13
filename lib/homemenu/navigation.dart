@@ -29,9 +29,12 @@ class NavigationScreen extends StatelessWidget {
       bottomNavigationBar:
           BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
         builder: (context, state) {
+          
           return BottomNavigationBar(
+            
             currentIndex: state.selectedIndex,
             type: BottomNavigationBarType.fixed,
+            
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
@@ -76,7 +79,8 @@ class NavigationScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.popAndPushNamed(context, DecisionPage.route);
-      }),
+      }, backgroundColor: Colors.red.withOpacity(0.95),
+      child: Icon(CupertinoIcons.heart_solid, size: 40,),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

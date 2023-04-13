@@ -4,6 +4,7 @@ import 'package:speeddatingapp/UI/PasswordReset/ForgotPassword/forgotPasswordMai
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
 import 'package:speeddatingapp/UI/Registration/TermsOfServicePopUp/termsOfService.dart';
 import 'package:speeddatingapp/UI/Registration/registrationMain.dart';
+import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
 import 'package:speeddatingapp/homemenu/home_screen_new.dart';
@@ -25,6 +26,7 @@ getRoutes() {
     Preferences.route: (context) => const Preferences(),
     NavigationScreen.route: (context) => const NavigationScreen(),
     WelcomePage.route: (context) => WelcomePage(),
-    DecisionPage.route: (context) => DecisionPage()
+    DecisionPage.route: (context) => DecisionPage(),
+    SwipingPage.route: (context) => SwipingPage()
   };
 }

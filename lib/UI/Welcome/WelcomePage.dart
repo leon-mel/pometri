@@ -28,7 +28,7 @@ class WelcomePage extends StatelessWidget {
               PageView(
                 physics: const ClampingScrollPhysics(),
                 controller: _controller,
-                children: const [
+                children:  [
                   WelcomeOne(),
                   WelcomeTwo(),
                   WelcomeThree(),

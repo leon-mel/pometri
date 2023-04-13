@@ -28,16 +28,18 @@ class ProfileScreen extends StatelessWidget {
           );
         } else if (state is ProfileScreenLoaded) {
           return ProfileShowCase(
-            userAboutMe: state.user.uAboutMe,
-            userAge: state.user.uAge,
-            userLocation: state.user.uLocation,
-            userName: state.user.uName,
-            userInterest: state.user.uInterest,
+            userAboutMe: state.user[0].uAboutMe,
+            userAge: state.user[0].uAge,
+            userLocation: state.user[0].uLocation,
+            userName: state.user[0].uName,
+            userInterest: state.user[0].uInterest,
           );
         } else if (state is ProfileScreenError) {
           return ErrorMessage(message: state.message);
         }
-        return Container(color: Colors.amber,);
+        return Container(
+          color: Colors.amber,
+        );
       },
     );
   }
@@ -112,36 +114,11 @@ class ProfileShowCase extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: SizeConfig.screenHeight / 2.2,
-                      child: SizedBox(
-                        width: SizeConfig.screenWidth,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const DecisionButton(
-                              color: Colors.white,
-                              icon: Icons.close,
-                              iconColor: Colors.black,
-                            ),
-                            DecisionButton(
-                              color: Colors.red[800],
-                              icon: CupertinoIcons.heart_solid,
-                              iconColor: Colors.white,
-                            ),
-                            const DecisionButton(
-                                color: Colors.white,
-                                icon: Icons.star,
-                                iconColor: Colors.black)
-                          ],
-                        ),
-                      ),
-                    ),
                   ]),
               Padding(
                 padding: EdgeInsets.only(
                     left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 17),
+                    top: SizeConfig.blockSizeHorizontal * 10),
                 child: Row(
                   children: [
                     Text(

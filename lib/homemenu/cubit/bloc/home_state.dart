@@ -8,7 +8,7 @@ class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
-  final User user;
+  final List<User> user;
 
   HomeLoadedState({required this.user});
 }

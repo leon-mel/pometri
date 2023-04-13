@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomeOne extends StatelessWidget {
-  const WelcomeOne({Key? key}) : super(key: key);
+   WelcomeOne({Key? key}) : super(key: key);
+
+final LottieBuilder MatchingAnimation =  Lottie.network("https://assets8.lottiefiles.com/packages/lf20_1t8na1gy.json");
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +24,11 @@ class WelcomeOne extends StatelessWidget {
           Container(
             color: Colors.grey[200],
             child: Center(
-                child: Lottie.network(
-                    "https://assets8.lottiefiles.com/packages/lf20_1t8na1gy.json")),
+                child: MatchingAnimation),
           ),
-          Container()
+          Container(),
+          
+          
         ],
       ),
     ));

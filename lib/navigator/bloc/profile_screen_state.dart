@@ -8,7 +8,7 @@ class ProfileScreenInitial extends ProfileScreenState {}
 class ProfileScreenLoading extends ProfileScreenState {}
 
 class ProfileScreenLoaded extends ProfileScreenState {
-  final User user;
+  final List<User> user;
   ProfileScreenLoaded({required this.user});
 }
 
