@@ -22,9 +22,9 @@ class SwipingBloc extends Bloc<SwipingEvent, SwipingState> {
           (r) => emit(SwipingLoadedState(users: r)));
     });
 
-    on<LoadUserEvent>((event, emit) {
+    on<LoadUserEvent>((event, emit) async {
       LoadUserEvent? event;
-      emit(SwipingLoadedState(users: event!.users));
+      emit(SwipingLoadedState(users:event!.users ));
     });
 
     on<SwipeLeft>((event, emit) {
@@ -37,7 +37,7 @@ class SwipingBloc extends Bloc<SwipingEvent, SwipingState> {
         } catch (_) {}
       }
     });
-    
+
     on<SwipeRight>((event, emit) {
       SwipeRight? event;
       SwipingState? state;

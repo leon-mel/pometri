@@ -1,8 +1,11 @@
+import 'package:appinio_swiper/appinio_swiper.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/domain/entities/classUser.dart';
+import 'package:speeddatingapp/domain/failures/failures.dart';
 import 'package:speeddatingapp/domain/usecases/user_usecases.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
 
@@ -15,9 +18,9 @@ class SwipingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SwipingBloc, SwipingState>(
-      bloc: BlocProvider.of<SwipingBloc>(context)
-        ..add(SwipingLoadingEvent())
-        ,
+      bloc: BlocProvider.of<SwipingBloc>(context)..add(SwipingLoadingEvent())
+       //..add(LoadUserEvent(users: UserUsecases().users ))
+      ,
       builder: (context, state) {
         if (state is SwipingLoadingState) {
           return Center(
@@ -51,39 +54,24 @@ class SwipingPage extends StatelessWidget {
             ),
             body: Column(
               children: [
-                Draggable(
-                    feedback: UserCard(
-                      uAge: state.users[0].uAge,
-                      uImage: state.users[0].imageUrls,
-                      uInterest: state.users[0].uInterest[0],
-                      uLocation: state.users[0].uLocation,
-                      uName: state.users[0].uName,
-                    ),
-                    childWhenDragging: UserCard(
-                      uAge: state.users[1].uAge,
-                      uImage: state.users[1].imageUrls,
-                      uInterest: state.users[1].uInterest[1],
-                      uLocation: state.users[1].uLocation,
-                      uName: state.users[1].uName,
-                    ),
-                    onDragEnd: (drag) {
-                      if (drag.velocity.pixelsPerSecond.dx < 0) {
-                        context.read<SwipingBloc>()
-                          ..add(SwipeLeft(user: state.users[0]));
-                        print("Swiped Left");
-                      } else {
-                        context.read<SwipingBloc>()
-                          ..add(SwipeRight(user: state.users[0]));
-                        print("Swiped Right");
-                      }
-                    },
-                    child: UserCard(
-                      uAge: state.users[0].uAge,
-                      uImage: state.users[0].imageUrls,
-                      uInterest: state.users[0].uInterest[0],
-                      uLocation: state.users[0].uLocation,
-                      uName: state.users[0].uName,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    height: SizeConfig.blockSizeVertical*70,
+                    child: AppinioSwiper(
+                      cardsBuilder: (BuildContext context, int index){
+                        return UserCard(
+                      uAge: state.users[index].uAge,
+                      uImage: state.users[index].imageUrls,
+                      uInterest: state.users[index].uInterest[0],
+                      uLocation: state.users[index].uLocation,
+                      uName: state.users[index].uName,
+                    );
+                      },
+                      cardsCount: state.users.length),
+                  )
+                   
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -192,11 +180,11 @@ class UserCard extends StatelessWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
-                "$uName" + "$uAge",
+                "$uName," + " $uAge",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
               Text(
-                "$uInterest" + "$uLocation",
+                "$uInterest," + " $uLocation",
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               Row(

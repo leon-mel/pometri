@@ -45,15 +45,15 @@ class SpeedDatingApp extends StatelessWidget  {
               create: (BuildContext context) => WelcomeBloc()),
           BlocProvider<SwipingBloc>(
               create: (BuildContext context) => SwipingBloc()
-                ..add(LoadUserEvent(users: UserUsecases().users)))
-        ],
+               // ..add(LoadUserEvent(users: UserUsecases().users))
+    )],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
           home: Builder(
             builder: (BuildContext context) {
               SizeConfig().initState(context);
-              return const SwipingPage();
+              return const Login();
             },
           ),
           routes: getRoutes(),

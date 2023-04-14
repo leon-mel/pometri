@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
             height: 20,
             width: 20,
             child: CircularProgressIndicator(
-              color: Colors.amber,
+              color: Colors.red,
             ),
           );
         } else if (state is ProfileScreenLoaded) {

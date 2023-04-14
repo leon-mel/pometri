@@ -29,12 +29,9 @@ class NavigationScreen extends StatelessWidget {
       bottomNavigationBar:
           BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
         builder: (context, state) {
-          
           return BottomNavigationBar(
-            
             currentIndex: state.selectedIndex,
             type: BottomNavigationBarType.fixed,
-            
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
@@ -66,9 +63,9 @@ class NavigationScreen extends StatelessWidget {
       body: BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
         builder: (context, state) {
           if (state.navbarItem == NavbarItem.home) {
-            return const HomeScreenNew();
+            return const Center(child: HomeScreenNew());
           } else if (state.navbarItem == NavbarItem.profile) {
-            return const ProfileScreen();
+            return const Center(child: ProfileScreen());
           } else if (state.navbarItem == NavbarItem.chat) {
             return const Placeholder();
           } else if (state.navbarItem == NavbarItem.settings) {
@@ -77,10 +74,16 @@ class NavigationScreen extends StatelessWidget {
           return Container();
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.popAndPushNamed(context, DecisionPage.route);
-      }, backgroundColor: Colors.red.withOpacity(0.95),
-      child: Icon(CupertinoIcons.heart_solid, size: 40,),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.popAndPushNamed(context, DecisionPage.route);
+        },
+        backgroundColor: Colors.red.withOpacity(0.95),
+        child: Icon(
+          CupertinoIcons.heart_solid,
+          size: 40,
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

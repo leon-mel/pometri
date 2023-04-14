@@ -21,7 +21,7 @@ class HomeScreenNew extends StatelessWidget {
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return CircularProgressIndicator(
-            color: Colors.amber,
+            color: Colors.red,
           );
         } else if (state is HomeLoadedState) {
           return SafeArea(
