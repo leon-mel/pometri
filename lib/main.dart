@@ -17,11 +17,13 @@ import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
 import 'package:speeddatingapp/navigator/profileScreen.dart';
 import 'domain/entities/classRoutes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  /*WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await di.init();
+  await di.init();*/
   runApp(const SpeedDatingApp());
 }
 

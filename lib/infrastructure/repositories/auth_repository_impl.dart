@@ -1,10 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:speeddatingapp/domain/failures/auth_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:speeddatingapp/domain/repositories/auth_repository.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
+/*class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth firebaseAuth;
 
   AuthRepositoryImpl({required this.firebaseAuth});
@@ -23,3 +23,4 @@ class AuthRepositoryImpl implements AuthRepository {
     throw UnimplementedError();
   }
 }
+*/

@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "400298829250",
-    "project_id": "pometri-6d7fe",
-    "storage_bucket": "pometri-6d7fe.appspot.com"
+    "project_number": "113388558408",
+    "project_id": "fom-sda",
+    "storage_bucket": "fom-sda.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:400298829250:android:d864abc30eb4afc050a25b",
+        "mobilesdk_app_id": "1:113388558408:android:5cc9960e62c3b93a70e07d",
         "android_client_info": {
           "package_name": "com.fompraxisprojektspeeddatingapp.speeddatingapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "400298829250-mt58o1eiqn358tvt24qt2ue24uno3qc1.apps.googleusercontent.com",
+          "client_id": "113388558408-oj97isfjav6rfm7red76s05ufktv0p7n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjYBR63wGii3SfsbDzClHeEca20-LQ8Us"
+          "current_key": "AIzaSyDlHfiW-hAJCaxyWpuZ6k2tNcbN1mZMNxE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "400298829250-mt58o1eiqn358tvt24qt2ue24uno3qc1.apps.googleusercontent.com",
+              "client_id": "113388558408-oj97isfjav6rfm7red76s05ufktv0p7n.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "400298829250-pmnhh86k42k0j5j2nv3slt7ocprnh2sl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.fompraxisprojektspeeddatingapp.speeddatingapp"
-              }
             }
           ]
         }
