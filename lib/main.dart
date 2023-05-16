@@ -19,11 +19,11 @@ import 'domain/entities/classRoutes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future main() async {
-  /*WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await di.init();*/
+  //WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
   runApp(const SpeedDatingApp());
 }
 
