@@ -20,10 +20,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:speeddatingapp/backend/database.dart';
 
 Future main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp
+      (
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyDlHfiW-hAJCaxyWpuZ6k2tNcbN1mZMNxE',
+        projectId: 'fom-sda',
+        appId: '1:113388558408:android:5cc9960e62c3b93a70e07d',
+        messagingSenderId: '113388558408',
+      ),
+    );
+  
+  CheckDatabaseConnection().checkFirestoreConnection();
   runApp(const SpeedDatingApp());
 }
 

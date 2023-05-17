@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
@@ -6,6 +7,7 @@ import 'package:speeddatingapp/domain/entities/classDefineColor.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:speeddatingapp/UI/Registration//registrationMain.dart';
 
+import '../../backend/database.dart';
 import '../../homemenu/landingPage.dart';
 import '../PasswordReset/ForgotPassword/forgotPasswordMain.dart';
 
@@ -253,6 +255,9 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
 class ButtonLogin extends StatelessWidget {
   const ButtonLogin({Key? key}) : super(key: key);
 
+  final String username = "test";
+  final String password = "test";
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -262,7 +267,8 @@ class ButtonLogin extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         child: Bounce(
           onPressed: () {
-            Navigator.popAndPushNamed(context, WelcomePage.route);
+            getLoginField('login','FatSalt','userRef');
+            getLoginField('login','FatSalt','password');
           },
           duration: const Duration(milliseconds: 125),
           child: Container(
