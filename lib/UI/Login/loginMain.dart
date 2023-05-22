@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/injection.dart';
-
-import 'bloc/build_login_bloc.dart';
 import 'bloc/sign_up_bloc.dart';
 
 class Login extends StatelessWidget {
@@ -45,14 +43,10 @@ class Login extends StatelessWidget {
                     children: [LabelLogin()],
                   ),
                   Row(
-                    children: [
-                      TextFieldUsername(),
-                    ],
+                    children: [TextFieldUsername()],
                   ),
                   Row(
-                    children: [
-                      TextFieldPassword(),
-                    ],
+                    children: [TextFieldPassword()],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -61,6 +55,10 @@ class Login extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [ButtonLogin()],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [LabelWrongUserdata()],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
