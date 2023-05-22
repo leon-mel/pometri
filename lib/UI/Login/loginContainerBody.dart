@@ -87,8 +87,11 @@ class LabelUsernamePassword extends StatelessWidget {
   }
 }
 
+String username="";
+final usernameController = TextEditingController();
+
 class TextFieldUsername extends StatefulWidget {
-  const TextFieldUsername({Key? key}) : super(key: key);
+  TextFieldUsername({Key? key}) : super(key: key);
 
   @override
   State<TextFieldUsername> createState() => _TextFieldUsernameState();
@@ -117,6 +120,7 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
+            controller: usernameController,
             enableInteractiveSelection: false,
             enableSuggestions: false,
             autocorrect: false,
@@ -160,6 +164,8 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
   }
 }
 
+String password="";
+final passwordController = TextEditingController();
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({Key? key}) : super(key: key);
 
@@ -191,6 +197,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
+            controller: passwordController,
             focusNode: _focusTextfield,
             obscureText: _passwordObscured,
             enableInteractiveSelection: false,
@@ -252,12 +259,14 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
   }
 }
 
-class ButtonLogin extends StatelessWidget {
+class ButtonLogin extends StatefulWidget {
   const ButtonLogin({Key? key}) : super(key: key);
 
-  final String username = "test";
-  final String password = "test";
+  @override
+  State<ButtonLogin> createState() => _ButtonLoginState();
+}
 
+class _ButtonLoginState extends State<ButtonLogin> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -266,9 +275,16 @@ class ButtonLogin extends StatelessWidget {
         color: const Color(0xFF666666),
         borderRadius: BorderRadius.circular(50),
         child: Bounce(
-          onPressed: () {
-            getLoginField('login','FatSalt','userRef');
-            getLoginField('login','FatSalt','password');
+          onPressed: () async {
+            setState(() {
+              username = usernameController.text;
+              password = passwordController.text;
+            });
+            bool userResult = await getLoginField('login',username,'userRef',username);
+            bool passwordResult = await getLoginField('login',username,'password',password);
+            if(userResult && passwordResult){
+              Navigator.pushNamed(context, WelcomePage.route);
+            }
           },
           duration: const Duration(milliseconds: 125),
           child: Container(

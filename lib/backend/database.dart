@@ -4,6 +4,8 @@ import 'dart:html';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../UI/Login/loginContainerBody.dart';
+
 class DatabaseLogin{
 
 }
@@ -22,7 +24,8 @@ class CheckDatabaseConnection {
 }
 
 
-Future<void> getLoginField(String collection, String userID,String field ) async {
+Future<bool> getLoginField(String collection, String userID,String field, String fieldVar) async {
+
   try {
     // Referenz zur Sammlung und zum Dokument
     CollectionReference<Map<String, dynamic>> collectionReference =
@@ -38,16 +41,25 @@ Future<void> getLoginField(String collection, String userID,String field ) async
       // Überprüfe, ob das Feld vorhanden ist
       if (data!.containsKey(field)) {
         dynamic fieldValue = data![field];
-        print(fieldValue);
+        if(fieldValue == fieldVar){
+          return true;
+        }
       } else {
         print('Das Feld $field existiert nicht im Dokument.');
       }
     } else {
-      print('Dokument FatSalt nicht gefunden.');
+      print('Benutzername oder Kennwort falsch.');
     }
-  } catch (e) {
-    print('Fehler beim Abrufen der Daten: $e');
   }
+
+  catch (e) {
+    if(e is AssertionError && e.toString().contains('path.isNotEmpty')){
+      print('Benutzername NULL.');
+    } else {
+      print('Fehler beim Abrufen der Daten: $e');
+    }
+  }
+  return false;
 }
 
 
