@@ -19,31 +19,29 @@ import 'domain/entities/classRoutes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:speeddatingapp/backend/database.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp
-      (
-      options: const FirebaseOptions(
-        apiKey: 'AIzaSyDlHfiW-hAJCaxyWpuZ6k2tNcbN1mZMNxE',
-        projectId: 'fom-sda',
-        appId: '1:113388558408:android:5cc9960e62c3b93a70e07d',
-        messagingSenderId: '113388558408',
-      ),
-    );
-  
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyDlHfiW-hAJCaxyWpuZ6k2tNcbN1mZMNxE',
+      projectId: 'fom-sda',
+      appId: '1:113388558408:android:5cc9960e62c3b93a70e07d',
+      messagingSenderId: '113388558408',
+    ),
+  );
+
   CheckDatabaseConnection().checkFirestoreConnection();
   runApp(const SpeedDatingApp());
 }
 
-class SpeedDatingApp extends StatelessWidget  {
-  
+class SpeedDatingApp extends StatelessWidget {
   const SpeedDatingApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context)   {
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
           BlocProvider<ProfileScreenBloc>(
@@ -58,8 +56,9 @@ class SpeedDatingApp extends StatelessWidget  {
               create: (BuildContext context) => WelcomeBloc()),
           BlocProvider<SwipingBloc>(
               create: (BuildContext context) => SwipingBloc()
-               // ..add(LoadUserEvent(users: UserUsecases().users))
-    )],
+              // ..add(LoadUserEvent(users: UserUsecases().users))
+              )
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(fontFamily: 'Roboto'),
