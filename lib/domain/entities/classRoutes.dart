@@ -1,3 +1,4 @@
+import 'package:speeddatingapp/UI/Chat/ChatPage.dart';
 import 'package:speeddatingapp/UI/Options/Preferences/Preferences.dart';
 import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
 import 'package:speeddatingapp/UI/PasswordReset/ForgotPassword/forgotPasswordMain.dart';
@@ -27,6 +28,7 @@ getRoutes() {
     NavigationScreen.route: (context) => const NavigationScreen(),
     WelcomePage.route: (context) => WelcomePage(),
     DecisionPage.route: (context) => DecisionPage(),
-    SwipingPage.route: (context) => SwipingPage()
+    SwipingPage.route: (context) => SwipingPage(),
+    ChatPage.route: (context) => ChatPage()
   };
 }

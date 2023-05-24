@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:speeddatingapp/UI/Chat/ChatPage.dart';
 import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
@@ -67,7 +68,7 @@ class NavigationScreen extends StatelessWidget {
           } else if (state.navbarItem == NavbarItem.profile) {
             return const Center(child: ProfileScreen());
           } else if (state.navbarItem == NavbarItem.chat) {
-            return const Placeholder();
+            return const Center(child: ChatPage());
           } else if (state.navbarItem == NavbarItem.settings) {
             return const SettingPage();
           }
