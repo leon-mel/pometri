@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
@@ -108,9 +109,18 @@ class ProfileShowCase extends StatelessWidget {
                         borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(25),
                             bottomRight: Radius.circular(25)),
-                        child: Image.asset(
-                          'assets/user.png',
-                          fit: BoxFit.cover,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage('assets/user.png'))),
+                          child: Row(children: [
+                            UserImageSmall(
+                              userImage: "assets/user.png",
+                              userImageHeight: 60.5,
+                              userImageWidth: 60.5,
+                            )
+                          ]),
                         ),
                       ),
                     ),

@@ -19,7 +19,7 @@ class SwipingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SwipingBloc, SwipingState>(
       bloc: BlocProvider.of<SwipingBloc>(context)..add(SwipingLoadingEvent())
-       //..add(LoadUserEvent(users: UserUsecases().users ))
+      //..add(LoadUserEvent(users: UserUsecases().users ))
       ,
       builder: (context, state) {
         if (state is SwipingLoadingState) {
@@ -55,23 +55,21 @@ class SwipingPage extends StatelessWidget {
             body: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    height: SizeConfig.blockSizeVertical*70,
-                    child: AppinioSwiper(
-                      cardsBuilder: (BuildContext context, int index){
-                        return UserCard(
-                      uAge: state.users[index].uAge,
-                      uImage: state.users[index].imageUrls,
-                      uInterest: state.users[index].uInterest[0],
-                      uLocation: state.users[index].uLocation,
-                      uName: state.users[index].uName,
-                    );
-                      },
-                      cardsCount: state.users.length),
-                  )
-                   
-                ),
+                    padding: const EdgeInsets.all(20.0),
+                    child: Container(
+                      height: SizeConfig.blockSizeVertical * 70,
+                      child: AppinioSwiper(
+                          cardsBuilder: (BuildContext context, int index) {
+                            return UserCard(
+                              uAge: state.users[index].uAge,
+                              uImage: state.users[index].imageUrls,
+                              uInterest: state.users[index].uInterest[0],
+                              uLocation: state.users[index].uLocation,
+                              uName: state.users[index].uName,
+                            );
+                          },
+                          cardsCount: state.users.length),
+                    )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -189,10 +187,26 @@ class UserCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  UserImageSmall(),
-                  UserImageSmall(),
-                  UserImageSmall(),
-                  UserImageSmall()
+                  UserImageSmall(
+                    userImageHeight: 60,
+                    userImageWidth: 60,
+                    userImage: uImage,
+                  ),
+                  UserImageSmall(
+                    userImageHeight: 60,
+                    userImageWidth: 60,
+                    userImage: uImage,
+                  ),
+                  UserImageSmall(
+                    userImageHeight: 60,
+                    userImageWidth: 60,
+                    userImage: uImage,
+                  ),
+                  UserImageSmall(
+                    userImageHeight: 60,
+                    userImageWidth: 60,
+                    userImage: uImage,
+                  )
                 ],
               )
             ]),
@@ -204,19 +218,25 @@ class UserCard extends StatelessWidget {
 }
 
 class UserImageSmall extends StatelessWidget {
+  final userImageHeight;
+  final userImageWidth;
+  final String userImage;
   const UserImageSmall({
     Key? key,
+    required this.userImageHeight,
+    required this.userImageWidth,
+    required this.userImage,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 8, right: 8),
-      height: 60,
-      width: 60,
+      height: userImageHeight,
+      width: userImageWidth,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/User_1.jpg"), fit: BoxFit.cover),
+          image:
+              DecorationImage(image: AssetImage(userImage), fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(5)),
     );
   }
