@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
+import 'package:speeddatingapp/backend/sha256.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/domain/entities/classDefineColor.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -279,8 +280,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
           onPressed: () async {
             setState(() {
               username = usernameController.text;
-              password = passwordController.text;
-
+              password = shaEncode(passwordController.text);
             });
             bool userResult = await getLoginField('login',username,'userRef',username);
             bool passwordResult = await getLoginField('login',username,'password',password);
