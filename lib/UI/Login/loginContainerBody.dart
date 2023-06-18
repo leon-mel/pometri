@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
@@ -9,7 +8,6 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:speeddatingapp/UI/Registration//registrationMain.dart';
 
 import '../../backend/database.dart';
-import '../../homemenu/landingPage.dart';
 import '../PasswordReset/ForgotPassword/forgotPasswordMain.dart';
 
 class LabelLogin extends StatelessWidget {
@@ -92,7 +90,7 @@ String username="";
 final usernameController = TextEditingController();
 
 class TextFieldUsername extends StatefulWidget {
-  TextFieldUsername({Key? key}) : super(key: key);
+  const TextFieldUsername({Key? key}) : super(key: key);
 
   @override
   State<TextFieldUsername> createState() => _TextFieldUsernameState();
@@ -117,7 +115,7 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
             top: SizeConfig.blockSizeVertical * 3,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -134,7 +132,7 @@ class _TextFieldUsernameState extends State<TextFieldUsername> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -195,7 +193,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             controller: passwordController,
@@ -229,7 +227,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -314,7 +312,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
 
 
 
-Color colorLabelWrongUserdata = Color(0xFFFF3232);
+Color colorLabelWrongUserdata = const Color(0xFFFF3232);
 class LabelWrongUserdata extends StatefulWidget{
   const LabelWrongUserdata({Key? key}) : super(key: key);
 
@@ -465,7 +463,7 @@ class _LabelForgotPasswordState extends State<LabelForgotPassword> {
                 child: Text(
                   "Forgot your password?",
                   style: TextStyle(
-                      shadows: [Shadow(color: useColor, offset: Offset(0, -3))],
+                      shadows: [Shadow(color: useColor, offset: const Offset(0, -3))],
                       color: Colors.transparent,
                       decoration: TextDecoration.underline,
                       decorationColor: useColor,

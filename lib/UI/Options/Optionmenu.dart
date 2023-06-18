@@ -34,7 +34,7 @@ class Optionmenu extends StatelessWidget {
     } //void oeffneFehler()
 
     return Scaffold(
-          appBar: AppBar(title: Text('Options')),
+          appBar: AppBar(title: const Text('Options')),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

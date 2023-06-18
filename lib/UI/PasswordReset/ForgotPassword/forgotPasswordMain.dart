@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'forgotPasswordContainerBody.dart';
@@ -11,10 +10,10 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF666666),
+        backgroundColor: const Color(0xFF666666),
         title: Text("Password recovery",
             style: TextStyle(
-                color: Color(0xFFFFFFFF),
+                color: const Color(0xFFFFFFFF),
                 fontSize: SizeConfig.blockSizeVertical * 3)),
         elevation: 16,
       ),
@@ -28,10 +27,10 @@ class ForgotPassword extends StatelessWidget {
             height: SizeConfig.blockSizeVertical * 25,
             width: SizeConfig.blockSizeHorizontal * 90,
             decoration: BoxDecoration(
-                color: Color(0xFF666666),
-                border: Border.all(color: Color(0xFF000000), width: 1.5),
+                color: const Color(0xFF666666),
+                border: Border.all(color: const Color(0xFF000000), width: 1.5),
                 borderRadius: BorderRadius.circular(12)),
-            child: Column(
+            child: const Column(
               children: [
                 Row(
                   children: [TextFieldMail()],

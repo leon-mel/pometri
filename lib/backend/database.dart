@@ -4,7 +4,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../UI/Login/loginContainerBody.dart';
 
 class DatabaseLogin{
 
@@ -40,7 +39,7 @@ Future<bool> getLoginField(String collection, String userID,String field, String
 
       // Überprüfe, ob das Feld vorhanden ist
       if (data!.containsKey(field)) {
-        dynamic fieldValue = data![field];
+        dynamic fieldValue = data[field];
         if(fieldValue == fieldVar){
           return true;
         }

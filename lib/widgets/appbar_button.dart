@@ -9,7 +9,7 @@ class appbarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: (){},
-      icon: Icon(Icons.arrow_back_ios_new_outlined)
+      icon: const Icon(Icons.arrow_back_ios_new_outlined)
     );
   }
 }

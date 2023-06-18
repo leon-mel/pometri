@@ -13,7 +13,7 @@ class WelcomeTwo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Find your Love..",
             style: TextStyle(
                 fontSize: 40, fontWeight: FontWeight.w600, color: Colors.grey),

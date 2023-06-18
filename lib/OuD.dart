@@ -35,7 +35,7 @@ class OuD extends StatelessWidget {
     } //void oeffneFehler()
 
     return Scaffold(
-          appBar: AppBar(title: Text('Optionen')),
+          appBar: AppBar(title: const Text('Optionen')),
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

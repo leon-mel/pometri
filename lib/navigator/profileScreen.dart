@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:speeddatingapp/homemenu/home_screen_new.dart';
 import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,6 +35,8 @@ class ProfileScreen extends StatelessWidget {
             userName: state.user[0].uName,
             userInterest: state.user[0].uInterest,
           );
+        } else if (state is ProfileImageChangeInitial) {
+          return const ProfileImageChange();
         } else if (state is ProfileScreenError) {
           return ErrorMessage(message: state.message);
         }
@@ -43,6 +45,47 @@ class ProfileScreen extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class ProfileImageChange extends StatelessWidget {
+  const ProfileImageChange({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const CustomHeader(),
+        const Padding(
+          padding: EdgeInsets.only(top: 18.0),
+          child: Text(
+            "Add photos and impress everyone",
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+        Lottie.network(
+            "https://assets8.lottiefiles.com/packages/lf20_cz6ukw4q.json"),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  BlocProvider.of<ProfileScreenBloc>(context)
+                    .add(ProfileImageChangeUploadEvent());
+                },
+                child: const Icon(Icons.photo_library)),
+            ElevatedButton(onPressed: () {
+              BlocProvider.of<ProfileScreenBloc>(context)
+                    .add(ProfileImageChangeTakePhotoEvent());
+            }, child: const Icon(Icons.camera_alt))
+          ],
+        )
+      ],
+    ));
   }
 }
 
@@ -78,165 +121,202 @@ class ProfileShowCase extends StatelessWidget {
   final userLocation;
   final userAboutMe;
   final List<String>? userInterest;
-  const ProfileShowCase({
-    Key? key,
-    required this.userName,
-    required this.userAge,
-    required this.userLocation,
-    required this.userAboutMe,
-    required this.userInterest,
-  }) : super(key: key);
+  final picker = ImagePicker();
+  File? imageFile;
+  ProfileShowCase(
+      {Key? key,
+      required this.userName,
+      required this.userAge,
+      required this.userLocation,
+      required this.userAboutMe,
+      required this.userInterest,
+      this.imageFile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SafeArea(
-        child: Container(
-          height: SizeConfig.screenHeight,
-          width: SizeConfig.screenWidth,
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                  alignment: Alignment.bottomCenter,
-                  clipBehavior: Clip.none,
+        child: Column(
+          children: [
+            const CustomHeader(),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Container(
+                height: SizeConfig.screenHeight,
+                width: SizeConfig.screenWidth,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: SizeConfig.screenHeight / 2,
-                      width: SizeConfig.screenWidth,
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(25),
-                            bottomRight: Radius.circular(25)),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage('assets/user.png'))),
-                          child: Row(children: [
-                            UserImageSmall(
-                              userImage: "assets/user.png",
-                              userImageHeight: 60.5,
-                              userImageWidth: 60.5,
-                            )
-                          ]),
-                        ),
+                    Stack(
+                        alignment: Alignment.bottomCenter,
+                        clipBehavior: Clip.none,
+                        children: [
+                          SizedBox(
+                            height: SizeConfig.screenHeight / 2,
+                            width: SizeConfig.screenWidth,
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(25),
+                                  bottomRight: Radius.circular(25)),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage('assets/user.png'))),
+                                child: ListView.separated(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 3,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: UserImageSmall(
+                                          userImage: "assets/user.png",
+                                          userImageHeight: 60.5,
+                                          userImageWidth: 60.5,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return const SizedBox(
+                                      width: 2,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                BlocProvider.of<ProfileScreenBloc>(context)
+                                  .add(ProfileImageChangeEvent());
+                              },
+                              child: Container(
+                                color: Colors.black,
+                              ))
+                        ]),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeHorizontal * 10),
+                      child: Row(
+                        children: [
+                          Text(
+                            userName + ", ",
+                            style: TextStyle(
+                                fontSize: 26,
+                                decoration: TextDecoration.none,
+                                color: Colors.grey[500]),
+                          ),
+                          Text(
+                            userAge.toString(),
+                            style: TextStyle(
+                                fontSize: 26,
+                                decoration: TextDecoration.none,
+                                color: Colors.grey[500]),
+                          ),
+                        ],
                       ),
                     ),
-                  ]),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 10),
-                child: Row(
-                  children: [
-                    Text(
-                      userName + ", ",
-                      style: TextStyle(
-                          fontSize: 26,
-                          decoration: TextDecoration.none,
-                          color: Colors.grey[500]),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeHorizontal * 2),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.grey[500]?.withOpacity(0.5),
+                            size: 16,
+                          ),
+                          Text(
+                            userLocation + ", ",
+                            style: TextStyle(
+                                fontSize: 14,
+                                decoration: TextDecoration.none,
+                                color: Colors.grey[500]?.withOpacity(0.5)),
+                          ),
+                          Text("47 km",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  decoration: TextDecoration.none,
+                                  color: Colors.grey[500]?.withOpacity(0.5)))
+                        ],
+                      ),
                     ),
-                    Text(
-                      userAge.toString(),
-                      style: TextStyle(
-                          fontSize: 26,
-                          decoration: TextDecoration.none,
-                          color: Colors.grey[500]),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeHorizontal * 10),
+                      child: Text(
+                        "About me",
+                        style: TextStyle(
+                            fontSize: 22,
+                            decoration: TextDecoration.none,
+                            color: Colors.grey[500]),
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 2),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.location_on,
-                      color: Colors.grey[500]?.withOpacity(0.5),
-                      size: 16,
-                    ),
-                    Text(
-                      userLocation + ", ",
-                      style: TextStyle(
-                          fontSize: 14,
-                          decoration: TextDecoration.none,
-                          color: Colors.grey[500]?.withOpacity(0.5)),
-                    ),
-                    Text("47 km",
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeHorizontal * 2),
+                      child: Text(
+                        userAboutMe,
                         style: TextStyle(
                             fontSize: 14,
                             decoration: TextDecoration.none,
-                            color: Colors.grey[500]?.withOpacity(0.5)))
+                            color: Colors.grey[500]?.withOpacity(0.5)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeHorizontal * 10),
+                      child: Text(
+                        "Interests",
+                        style: TextStyle(
+                            fontSize: 22,
+                            decoration: TextDecoration.none,
+                            color: Colors.grey[500]),
+                      ),
+                    ),
+                    Wrap(children: [
+                      for (var i in userInterest!)
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 5,
+                              top: SizeConfig.blockSizeHorizontal * 3),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.grey.withOpacity(0.5)),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                i,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none,
+                                    color: Colors.grey[500]?.withOpacity(0.8),
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ])
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 10),
-                child: Text(
-                  "About me",
-                  style: TextStyle(
-                      fontSize: 22,
-                      decoration: TextDecoration.none,
-                      color: Colors.grey[500]),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 2),
-                child: Text(
-                  userAboutMe,
-                  style: TextStyle(
-                      fontSize: 14,
-                      decoration: TextDecoration.none,
-                      color: Colors.grey[500]?.withOpacity(0.5)),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 5,
-                    top: SizeConfig.blockSizeHorizontal * 10),
-                child: Text(
-                  "Interests",
-                  style: TextStyle(
-                      fontSize: 22,
-                      decoration: TextDecoration.none,
-                      color: Colors.grey[500]),
-                ),
-              ),
-              Wrap(children: [
-                for (var i in userInterest!)
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.blockSizeHorizontal * 5,
-                        top: SizeConfig.blockSizeHorizontal * 3),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.grey.withOpacity(0.5)),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          i,
-                          style: TextStyle(
-                              fontSize: 14,
-                              decoration: TextDecoration.none,
-                              color: Colors.grey[500]?.withOpacity(0.8),
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                    ),
-                  ),
-              ])
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

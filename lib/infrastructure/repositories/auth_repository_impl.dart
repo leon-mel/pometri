@@ -1,8 +1,4 @@
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:speeddatingapp/domain/failures/auth_failures.dart';
-import 'package:dartz/dartz.dart';
-import 'package:speeddatingapp/domain/repositories/auth_repository.dart';
 
 /*class AuthRepositoryImpl implements AuthRepository {
   final FirebaseAuth firebaseAuth;

@@ -4,3 +4,11 @@ part of 'profile_screen_bloc.dart';
 abstract class ProfileScreenEvent {}
 
 class ProfileScreenLoadingEvent extends ProfileScreenEvent {}
+
+class ProfileImageChangeEvent extends ProfileScreenEvent{}
+
+class ProfileImageChangeUploadEvent extends ProfileScreenEvent{}
+
+class ProfileImageChangeTakePhotoEvent extends ProfileScreenEvent{}
+
+

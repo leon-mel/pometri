@@ -1,12 +1,8 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
-import 'package:speeddatingapp/domain/entities/classUser.dart';
-import 'package:speeddatingapp/domain/failures/failures.dart';
-import 'package:speeddatingapp/domain/usecases/user_usecases.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
 
 import 'bloc/swiping_bloc.dart';
@@ -23,7 +19,7 @@ class SwipingPage extends StatelessWidget {
       ,
       builder: (context, state) {
         if (state is SwipingLoadingState) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (state is SwipingLoadedState) {
@@ -56,7 +52,7 @@ class SwipingPage extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Container(
+                    child: SizedBox(
                       height: SizeConfig.blockSizeVertical * 70,
                       child: AppinioSwiper(
                           cardsBuilder: (BuildContext context, int index) {
@@ -75,14 +71,24 @@ class SwipingPage extends StatelessWidget {
                   children: [
                     Container(),
                     ChoiceButton(
+                      iconColor: Colors.red,
+                      wSize: 60,
+                      hSize: 60,
                       icon: Icons.clear_rounded,
+                      onPressed: () {},
                     ),
                     ChoiceButton(
-                      icon: CupertinoIcons.heart_fill,
-                    ),
+                        icon: CupertinoIcons.heart_fill,
+                        iconColor: Colors.red,
+                        wSize: 60,
+                        hSize: 60,
+                        onPressed: () {}),
                     ChoiceButton(
-                      icon: Icons.star,
-                    ),
+                        icon: Icons.star,
+                        iconColor: Colors.red,
+                        wSize: 60,
+                        hSize: 60,
+                        onPressed: () {}),
                     Container(),
                   ],
                 )
@@ -90,7 +96,7 @@ class SwipingPage extends StatelessWidget {
             ),
           );
         } else {
-          return Placeholder();
+          return const Placeholder();
         }
       },
     );
@@ -99,16 +105,24 @@ class SwipingPage extends StatelessWidget {
 
 class ChoiceButton extends StatelessWidget {
   final IconData icon;
+  final Color iconColor;
+  final double wSize;
+  final double hSize;
+  final Function onPressed;
   const ChoiceButton({
     Key? key,
     required this.icon,
+    required this.iconColor,
+    required this.wSize,
+    required this.hSize,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60,
-      height: 60,
+      width: wSize,
+      height: hSize,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,
@@ -117,12 +131,12 @@ class ChoiceButton extends StatelessWidget {
               color: Colors.grey.withAlpha(50),
               spreadRadius: 4,
               blurRadius: 4,
-              offset: Offset(3, 3),
+              offset: const Offset(3, 3),
             )
           ]),
       child: Icon(
         icon,
-        color: Colors.red,
+        color: iconColor,
       ),
     );
   }
@@ -147,7 +161,7 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
         height: SizeConfig.screenHeight / 1.4,
         width: SizeConfig.screenWidth,
         child: Stack(children: [
@@ -161,15 +175,15 @@ class UserCard extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 4,
                       blurRadius: 4,
-                      offset: Offset(3, 3))
+                      offset: const Offset(3, 3))
                 ]),
           ),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 gradient: LinearGradient(colors: [
-                  Color.fromARGB(200, 0, 0, 0).withOpacity(0.4),
-                  Color.fromARGB(0, 0, 0, 0)
+                  const Color.fromARGB(200, 0, 0, 0).withOpacity(0.4),
+                  const Color.fromARGB(0, 0, 0, 0)
                 ], begin: Alignment.bottomCenter, end: Alignment.topCenter)),
           ),
           Positioned(
@@ -178,34 +192,34 @@ class UserCard extends StatelessWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
-                "$uName," + " $uAge",
-                style: TextStyle(fontSize: 25, color: Colors.white),
+                "$uName," " $uAge",
+                style: const TextStyle(fontSize: 25, color: Colors.white),
               ),
               Text(
-                "$uInterest," + " $uLocation",
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                "$uInterest," " $uLocation",
+                style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
               Row(
                 children: [
                   UserImageSmall(
                     userImageHeight: 60,
                     userImageWidth: 60,
-                    userImage: uImage,
+                    userImage: uImage[0],
                   ),
                   UserImageSmall(
                     userImageHeight: 60,
                     userImageWidth: 60,
-                    userImage: uImage,
+                    userImage: uImage[0],
                   ),
                   UserImageSmall(
                     userImageHeight: 60,
                     userImageWidth: 60,
-                    userImage: uImage,
+                    userImage: uImage[0],
                   ),
                   UserImageSmall(
                     userImageHeight: 60,
                     userImageWidth: 60,
-                    userImage: uImage,
+                    userImage: uImage[0],
                   )
                 ],
               )
@@ -218,8 +232,8 @@ class UserCard extends StatelessWidget {
 }
 
 class UserImageSmall extends StatelessWidget {
-  final userImageHeight;
-  final userImageWidth;
+  final double userImageHeight;
+  final double userImageWidth;
   final String userImage;
   const UserImageSmall({
     Key? key,
@@ -235,8 +249,7 @@ class UserImageSmall extends StatelessWidget {
       height: userImageHeight,
       width: userImageWidth,
       decoration: BoxDecoration(
-          image:
-              DecorationImage(image: AssetImage(userImage), fit: BoxFit.cover),
+          image: DecorationImage(image: AssetImage(userImage)),
           borderRadius: BorderRadius.circular(5)),
     );
   }

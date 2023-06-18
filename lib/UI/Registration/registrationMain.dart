@@ -18,7 +18,7 @@ class Register extends StatelessWidget {
           elevation: 16,
         ),
         body: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Material(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -30,10 +30,10 @@ class Register extends StatelessWidget {
                   height: SizeConfig.blockSizeVertical * 130,
                   width: SizeConfig.blockSizeHorizontal * 90,
                   decoration: BoxDecoration(
-                      color: Color(0xFF666666),
-                      border: Border.all(color: Color(0xFF000000), width: 1.5),
+                      color: const Color(0xFF666666),
+                      border: Border.all(color: const Color(0xFF000000), width: 1.5),
                       borderRadius: BorderRadius.circular(12)),
-                  child: Column(children: [
+                  child: const Column(children: [
                     Row(
                       children: [TextFieldRegUsername()],
                     ),

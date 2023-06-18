@@ -1,12 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speeddatingapp/UI/Chat/ChatPage.dart';
 import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
-import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
 import 'package:speeddatingapp/homemenu/home_screen_new.dart';
@@ -80,7 +76,7 @@ class NavigationScreen extends StatelessWidget {
           Navigator.popAndPushNamed(context, DecisionPage.route);
         },
         backgroundColor: Colors.red.withOpacity(0.95),
-        child: Icon(
+        child: const Icon(
           CupertinoIcons.heart_solid,
           size: 40,
         ),

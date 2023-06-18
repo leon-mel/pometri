@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:lottie/lottie.dart';
 import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
@@ -25,7 +21,7 @@ class DecisionPage extends StatelessWidget {
               Navigator.popAndPushNamed(context, NavigationScreen.route);
             },
             color: Colors.black,
-            icon: Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios),
           ),
           
         ]),
@@ -33,13 +29,13 @@ class DecisionPage extends StatelessWidget {
       body: Center(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Text(
+          const Text(
             "What do you want to do?",
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
           ),
           Bounce(
-            onPressed: () => null,
-            duration: Duration(milliseconds: 120),
+            onPressed: () {},
+            duration: const Duration(milliseconds: 120),
             child: Container(
               height: SizeConfig.blockSizeVertical * 25,
               width: SizeConfig.blockSizeVertical * 40,
@@ -54,8 +50,8 @@ class DecisionPage extends StatelessWidget {
                   ]),
               child: Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Text(
                       "Match Making",
                       style:
@@ -71,7 +67,7 @@ class DecisionPage extends StatelessWidget {
             ),
           ),
           Bounce(
-            duration: Duration(milliseconds: 120),
+            duration: const Duration(milliseconds: 120),
             onPressed: () => Navigator.popAndPushNamed(context, SwipingPage.route),
             child: Container(
               height: SizeConfig.blockSizeVertical * 25,
@@ -87,8 +83,8 @@ class DecisionPage extends StatelessWidget {
                   ]),
               child: Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Text(
                       "Swiping",
                       style:

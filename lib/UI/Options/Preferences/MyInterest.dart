@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyInterest extends StatelessWidget {
@@ -22,7 +21,7 @@ class MyInterest extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20,
                 color:Colors.white
             ),

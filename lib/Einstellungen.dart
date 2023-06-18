@@ -66,7 +66,7 @@ class _SettingPageUIState extends State<SettingPageUI> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Einstellungen',
+            title: const Text('Einstellungen',
                 style: TextStyle(
                     fontSize: 24,
                     fontFamily: 'Roboto',
@@ -75,8 +75,8 @@ class _SettingPageUIState extends State<SettingPageUI> {
         body: Container(
             padding: const EdgeInsets.all(18),
             child: ListView(children: [
-              SizedBox(height: 5),
-              Row(
+              const SizedBox(height: 5),
+              const Row(
                 children: [
                   Icon(
                     Icons.person,
@@ -90,15 +90,15 @@ class _SettingPageUIState extends State<SettingPageUI> {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Divider(height: 20, thickness: 1),
-              SizedBox(height: 3),
+              const Divider(height: 20, thickness: 1),
+              const SizedBox(height: 3),
               buildAccountOption(context, 'Passwort ändern'),
               buildAccountOption(context, 'E-Mail ändern'),
               buildAccountOption(context, 'Sprache'),
               buildAccountOption(context, 'Datenschutzrichtlinie'),
               buildAccountOption(context, 'Account löschen'),
-              SizedBox(height: 25),
-              Row(
+              const SizedBox(height: 25),
+              const Row(
                 children: [
                   Icon(Icons.volume_up_outlined, color: Colors.blue),
                   SizedBox(width: 5),
@@ -107,16 +107,16 @@ class _SettingPageUIState extends State<SettingPageUI> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
                 ],
               ),
-              Divider(height: 20, thickness: 1),
-              SizedBox(height: 3),
+              const Divider(height: 20, thickness: 1),
+              const SizedBox(height: 3),
               buildNotificationOption(
                   'Bei Matches', valNotifyMatch, changeNotificationMatch),
               buildNotificationOption(
                   'Bei Chatnachrichten', valNotifyChat, changeNotificationChat),
               buildNotificationOption(
                   'Bei 24h nicht online', valNotifyOffline, changeNotificationOffline),
-              SizedBox(height: 25),
-              Row(
+              const SizedBox(height: 25),
+              const Row(
                 children: [
                   Icon(
                     Icons.group_add_outlined,
@@ -130,12 +130,12 @@ class _SettingPageUIState extends State<SettingPageUI> {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Divider(height: 20, thickness: 1),
-              SizedBox(height: 3),
+              const Divider(height: 20, thickness: 1),
+              const SizedBox(height: 3),
               buildSearchOption('Liebe', valLiebe, Icons.favorite, Colors.red, changeSearchLiebe),
               buildSearchOption('Freunde', valFreunde, Icons.person, Colors.blue, changeSearchFreunde),
               buildSearchOption('Hobby', valHobby, Icons.piano_outlined, Colors.black, changeSearchHobby),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ])));
   }
 
@@ -169,7 +169,7 @@ class _SettingPageUIState extends State<SettingPageUI> {
   Padding buildSearchOption(
       String title, bool value, IconData icon, Color color, Function onChangeMethod) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -208,7 +208,7 @@ class _SettingPageUIState extends State<SettingPageUI> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   title: Text(title),
-                  content: Column(
+                  content: const Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text('Option 1'),
@@ -221,7 +221,7 @@ class _SettingPageUIState extends State<SettingPageUI> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: Text('schließen'))
+                        child: const Text('schließen'))
                   ],
                 );
               });
@@ -236,7 +236,7 @@ class _SettingPageUIState extends State<SettingPageUI> {
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           color: Colors.grey[600])),
-                  Icon(Icons.arrow_forward_ios, color: Colors.grey)
+                  const Icon(Icons.arrow_forward_ios, color: Colors.grey)
                 ])));
   }
 }

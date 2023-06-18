@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
@@ -13,7 +12,7 @@ class TextFieldRegUsername extends StatefulWidget {
 
 class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
   final FocusNode _focusTextfield = FocusNode();
-  Color floatingLabelColor = Color(0xFF000000);
+  Color floatingLabelColor = const Color(0xFF000000);
   final TextEditingController _username = TextEditingController();
 
   @override
@@ -23,11 +22,9 @@ class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_username != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -36,7 +33,7 @@ class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
             top: SizeConfig.blockSizeVertical * 3,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -53,7 +50,7 @@ class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -64,11 +61,11 @@ class _TextFieldRegUsernameState extends State<TextFieldRegUsername> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Color(0xFF000000), width: 1),
+                borderSide: const BorderSide(color: Color(0xFF000000), width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: Color(0xFFFFFFFF), width: 2),
+                borderSide: const BorderSide(color: Color(0xFFFFFFFF), width: 2),
               ),
             ),
             textAlignVertical: const TextAlignVertical(y: 1),
@@ -100,11 +97,9 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (passwordOne != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
 
@@ -114,7 +109,7 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -147,7 +142,7 @@ class _TextFieldRegPasswordState extends State<TextFieldRegPassword> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -197,11 +192,9 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (passwordTwo != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
 
@@ -211,7 +204,7 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -244,7 +237,7 @@ class _TextFieldRegPasswordTwoState extends State<TextFieldRegPasswordTwo> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -292,11 +285,9 @@ class _TextFieldRegFirstNameState extends State<TextFieldRegFirstName> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_firstName != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -305,7 +296,7 @@ class _TextFieldRegFirstNameState extends State<TextFieldRegFirstName> {
             top: SizeConfig.blockSizeVertical * 4,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -321,7 +312,7 @@ class _TextFieldRegFirstNameState extends State<TextFieldRegFirstName> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -369,11 +360,9 @@ class _TextFieldRegLastNameState extends State<TextFieldRegLastName> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_lastName != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -382,7 +371,7 @@ class _TextFieldRegLastNameState extends State<TextFieldRegLastName> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -398,7 +387,7 @@ class _TextFieldRegLastNameState extends State<TextFieldRegLastName> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -438,8 +427,8 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
   final FocusNode _focusTextfield = FocusNode();
   Color floatingLabelColor = const Color(0xFF000000);
   DateTime date = DateTime.now();
-  TextEditingController _date = TextEditingController();
-  TextEditingController _date2 = TextEditingController();
+  final TextEditingController _date = TextEditingController();
+  final TextEditingController _date2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -448,11 +437,9 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_date2 != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -461,7 +448,7 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             onTap: () async {
@@ -471,12 +458,12 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
                   firstDate: DateTime(1900),
                   lastDate: DateTime.now());
               if (pickedDate == null) {
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).requestFocus(FocusNode());
                 return;
               }
               setState(() {
                 _date.text = DateFormat('yyyy-MM-dd').format(pickedDate);
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).requestFocus(FocusNode());
               });
             },
             focusNode: _focusTextfield,
@@ -491,7 +478,7 @@ class _TextFieldRegBirthDateState extends State<TextFieldRegBirthDate> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -542,8 +529,8 @@ class _DropDownButtonRegGenderState extends State<DropDownButtonRegGender> {
         child: Container(
           height: SizeConfig.blockSizeVertical * 5,
           decoration: BoxDecoration(
-              color: Color(0xFF666666),
-              border: Border.all(color: Color(0xFF000000), width: 1),
+              color: const Color(0xFF666666),
+              border: Border.all(color: const Color(0xFF000000), width: 1),
               borderRadius: BorderRadius.circular(12)),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
@@ -552,7 +539,7 @@ class _DropDownButtonRegGenderState extends State<DropDownButtonRegGender> {
                     EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
                 child: Text("Gender",
                     style: TextStyle(
-                        color: Color(0xFF000000),
+                        color: const Color(0xFF000000),
                         fontWeight: FontWeight.bold,
                         fontSize: 1.75 * SizeConfig.blockSizeVertical)),
               ),
@@ -604,11 +591,9 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_mail != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -617,7 +602,7 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
             top: SizeConfig.blockSizeVertical * 4,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -633,7 +618,7 @@ class _TextFieldRegMailState extends State<TextFieldRegMail> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -681,11 +666,9 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_mobNumber != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -694,7 +677,7 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -710,7 +693,7 @@ class _TextFieldRegMobNumberState extends State<TextFieldRegMobNumber> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -759,11 +742,9 @@ class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_streetAddress != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -772,7 +753,7 @@ class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -788,7 +769,7 @@ class _TextFieldRegStreetAddressState extends State<TextFieldRegStreetAddress> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -837,11 +818,9 @@ class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_addressNumber != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -850,7 +829,7 @@ class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -866,7 +845,7 @@ class _TextFieldRegAddressNumberState extends State<TextFieldRegAddressNumber> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -914,11 +893,9 @@ class _TextFieldRegCityState extends State<TextFieldRegCity> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_city != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -927,7 +904,7 @@ class _TextFieldRegCityState extends State<TextFieldRegCity> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -943,7 +920,7 @@ class _TextFieldRegCityState extends State<TextFieldRegCity> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -991,11 +968,9 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_city != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -1004,7 +979,7 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -1020,7 +995,7 @@ class _TextFieldRegPostCodeState extends State<TextFieldRegPostCode> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -1068,11 +1043,9 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
         floatingLabelColor = _focusTextfield.hasFocus
             ? const Color(0xFFFFFFFF)
             : const Color(0xFF000000);
-        if (_country != null) {
-          floatingLabelColor = _focusTextfield.hasFocus
-              ? const Color(0xFFFFFFFF)
-              : const Color(0xFF7FFFAB);
-        }
+        floatingLabelColor = _focusTextfield.hasFocus
+            ? const Color(0xFFFFFFFF)
+            : const Color(0xFF7FFFAB);
       });
     });
     return Expanded(
@@ -1081,7 +1054,7 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
             top: SizeConfig.blockSizeVertical * 2,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -1097,7 +1070,7 @@ class _TextFieldRegCountryState extends State<TextFieldRegCountry> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -1137,7 +1110,7 @@ class ButtonRegTermsOfService extends StatelessWidget {
           left: SizeConfig.blockSizeHorizontal * 5,
           right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-          child: Container(
+          child: SizedBox(
         height: SizeConfig.blockSizeVertical * 5,
         width: SizeConfig.blockSizeHorizontal * 50,
         child: ElevatedButton(
@@ -1174,12 +1147,11 @@ class ButtonRegTermsOfService extends StatelessWidget {
               ),
             );
           },
-          child: Text("Terms of Service",
+          child: const Text("Terms of Service",
               style: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold)),
           style: ElevatedButton.styleFrom(
-            side: BorderSide(color: Color(0xFF000000)),
-            primary: Color(0xFFE6E6E6),
+            side: const BorderSide(color: Color(0xFF000000)), backgroundColor: const Color(0xFFE6E6E6),
           ),
         ),
       )),
@@ -1198,20 +1170,20 @@ class RegistrationButton extends StatelessWidget {
           left: SizeConfig.blockSizeHorizontal * 5,
           right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-          child: Container(
+          child: SizedBox(
         height: SizeConfig.blockSizeVertical * 5,
         width: SizeConfig.blockSizeHorizontal * 50,
         child: ElevatedButton(
           onPressed: () {
             Widget okButton = TextButton(
-              child: Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
+              child: const Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
               onPressed: () {
                 Navigator.pop(context);
               },
             );
             AlertDialog alert = AlertDialog(
-                title: Text("Notification"),
-                content: Text("Your account creation was successful."),
+                title: const Text("Notification"),
+                content: const Text("Your account creation was successful."),
                 actions: [okButton]);
             showDialog(
               context: context,
@@ -1220,12 +1192,11 @@ class RegistrationButton extends StatelessWidget {
               },
             );
           },
-          child: Text("Create Account",
+          child: const Text("Create Account",
               style: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold)),
           style: ElevatedButton.styleFrom(
-            side: BorderSide(color: Color(0xFF000000)),
-            primary: Color(0xFFE6E6E6),
+            side: const BorderSide(color: Color(0xFF000000)), backgroundColor: const Color(0xFFE6E6E6),
           ),
         ),
       )),
@@ -1244,19 +1215,18 @@ class ReturnToLoginRegButton extends StatelessWidget {
           left: SizeConfig.blockSizeHorizontal * 5,
           right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-          child: Container(
+          child: SizedBox(
         height: SizeConfig.blockSizeVertical * 5,
         width: SizeConfig.blockSizeHorizontal * 50,
         child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text("Back to Login",
+          child: const Text("Back to Login",
               style: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold)),
           style: ElevatedButton.styleFrom(
-            side: BorderSide(color: Color(0xFF000000)),
-            primary: Color(0xFFE6E6E6),
+            side: const BorderSide(color: Color(0xFF000000)), backgroundColor: const Color(0xFFE6E6E6),
           ),
         ),
       )),

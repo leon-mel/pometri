@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:speeddatingapp/domain/failures/failures.dart';
 import 'package:speeddatingapp/domain/usecases/user_usecases.dart';
-import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
 
 import '../../../domain/entities/classUser.dart';
 
@@ -12,7 +11,7 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    Future sleep1 = Future.delayed(Duration(seconds: 3));
+    Future sleep1 = Future.delayed(const Duration(seconds: 3));
 
     final usecases = UserUsecases();
     on<HomeLoading>((event, emit) async {

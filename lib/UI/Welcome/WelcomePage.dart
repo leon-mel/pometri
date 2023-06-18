@@ -6,8 +6,6 @@ import 'package:speeddatingapp/UI/Welcome/WelcomePages/Welcome_1.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePages/Welcome_2.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePages/Welcome_3.dart';
 import 'package:speeddatingapp/UI/Welcome/WelcomePages/Welcome_4.dart';
-import 'package:speeddatingapp/domain/entities/classRoutes.dart';
-import 'package:speeddatingapp/homemenu/landingPage.dart';
 import 'package:speeddatingapp/homemenu/navigation.dart';
 
 import 'bloc/welcome_bloc.dart';
@@ -30,9 +28,9 @@ class WelcomePage extends StatelessWidget {
                 controller: _controller,
                 children:  [
                   WelcomeOne(),
-                  WelcomeTwo(),
-                  WelcomeThree(),
-                  WelcomeFour()
+                  const WelcomeTwo(),
+                  const WelcomeThree(),
+                  const WelcomeFour()
                 ],
               ),
               Container(
@@ -43,10 +41,10 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                alignment: Alignment(0, 0.90),
+                alignment: const Alignment(0, 0.90),
                 child: CupertinoButton(
                   color: Colors.grey[700],
-                  child: Text("Get me in !"),
+                  child: const Text("Get me in !"),
                   onPressed: () => Navigator.popAndPushNamed(
                       context, NavigationScreen.route),
                 ),

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:meta/meta.dart';
@@ -19,10 +18,10 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
 
     on<WelcomeEvent>((event, emit) async {
       emit(WelcomeLoading());
-      await welcomeAnimation;
-      await datingAnimation;
-      await friendsAnimation;
-      await startAnimation;
+      welcomeAnimation;
+      datingAnimation;
+      friendsAnimation;
+      startAnimation;
       emit(WelcomeLoaded(welcomeAnimation: welcomeAnimation, datingAnimation: datingAnimation, friendsAnimation: friendsAnimation, startAnimation: startAnimation));
     
       // TODO: implement event handler

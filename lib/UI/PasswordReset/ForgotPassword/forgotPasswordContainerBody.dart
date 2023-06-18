@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../domain/entities/classSizeConfig.dart';
@@ -29,7 +28,7 @@ class _TextFieldMailState extends State<TextFieldMail> {
             top: SizeConfig.blockSizeVertical * 1.5,
             left: SizeConfig.blockSizeHorizontal * 3,
             right: SizeConfig.blockSizeHorizontal * 3),
-        child: Container(
+        child: SizedBox(
           height: SizeConfig.blockSizeVertical * 5,
           child: TextField(
             focusNode: _focusTextfield,
@@ -45,7 +44,7 @@ class _TextFieldMailState extends State<TextFieldMail> {
               labelStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF000000),
+                color: const Color(0xFF000000),
               ),
               hintStyle: TextStyle(
                 fontSize: 1.75 * SizeConfig.blockSizeVertical,
@@ -87,19 +86,18 @@ class ReturnToLogin extends StatelessWidget {
           left: SizeConfig.blockSizeHorizontal * 5,
           right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-          child: Container(
+          child: SizedBox(
         height: SizeConfig.blockSizeVertical * 5,
         width: SizeConfig.blockSizeHorizontal * 50,
         child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text("Back to Login",
+          child: const Text("Back to Login",
               style: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold)),
           style: ElevatedButton.styleFrom(
-            side: BorderSide(color: Color(0xFF000000)),
-            primary: Color(0xFFE6E6E6),
+            side: const BorderSide(color: Color(0xFF000000)), backgroundColor: const Color(0xFFE6E6E6),
           ),
         ),
       )),
@@ -118,7 +116,7 @@ class ResetPassword extends StatelessWidget {
           left: SizeConfig.blockSizeHorizontal * 5,
           right: SizeConfig.blockSizeHorizontal * 5),
       child: Center(
-          child: Container(
+          child: SizedBox(
         height: SizeConfig.blockSizeVertical * 5,
         width: SizeConfig.blockSizeHorizontal * 50,
         child: Directionality(
@@ -127,15 +125,15 @@ class ResetPassword extends StatelessWidget {
             onPressed: () {
               Widget okButton = TextButton(
                 child:
-                    Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               );
               AlertDialog alert = AlertDialog(
-                  title: Text("Notification"),
+                  title: const Text("Notification"),
                   content:
-                      Text("An E-Mail has been sent to reset your password."),
+                      const Text("An E-Mail has been sent to reset your password."),
                   actions: [okButton]);
               showDialog(
                 context: context,
@@ -144,13 +142,12 @@ class ResetPassword extends StatelessWidget {
                 },
               );
             },
-            icon: Icon(Icons.key, color: Color(0xFF000000)),
-            label: Text("Reset password",
+            icon: const Icon(Icons.key, color: Color(0xFF000000)),
+            label: const Text("Reset password",
                 style: TextStyle(
                     color: Color(0xFF000000), fontWeight: FontWeight.bold)),
             style: ElevatedButton.styleFrom(
-              side: BorderSide(color: Color(0xFF000000)),
-              primary: Color(0xFFE6E6E6),
+              side: const BorderSide(color: Color(0xFF000000)), backgroundColor: const Color(0xFFE6E6E6),
             ),
           ),
         ),

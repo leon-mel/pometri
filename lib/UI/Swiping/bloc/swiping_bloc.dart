@@ -10,7 +10,7 @@ part 'swiping_event.dart';
 part 'swiping_state.dart';
 
 class SwipingBloc extends Bloc<SwipingEvent, SwipingState> {
-  Future sleep1 = Future.delayed(Duration(seconds: 2));
+  Future sleep1 = Future.delayed(const Duration(seconds: 2));
   final usecases = UserUsecases();
   SwipingBloc() : super(SwipingLoadingState()) {
     on<SwipingLoadingEvent>((event, emit) async {

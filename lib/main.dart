@@ -1,24 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:speeddatingapp/UI/Login/loginContainerBody.dart';
 import 'package:speeddatingapp/UI/Login/loginMain.dart';
-import 'package:speeddatingapp/UI/Swiping/Swiping.dart';
 import 'package:speeddatingapp/UI/Swiping/bloc/swiping_bloc.dart';
-import 'package:speeddatingapp/UI/Welcome/WelcomePage.dart';
 import 'package:speeddatingapp/UI/Welcome/bloc/welcome_bloc.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
-import 'package:speeddatingapp/domain/usecases/user_usecases.dart';
 import 'package:speeddatingapp/homemenu/cubit/bloc/home_bloc.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
-import 'package:speeddatingapp/homemenu/decision.dart';
-import 'package:speeddatingapp/homemenu/navigation.dart';
-import 'package:speeddatingapp/injection.dart' as di;
 import 'package:speeddatingapp/navigator/bloc/profile_screen_bloc.dart';
-import 'package:speeddatingapp/navigator/profileScreen.dart';
 import 'domain/entities/classRoutes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:speeddatingapp/backend/database.dart';
 

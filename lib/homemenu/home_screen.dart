@@ -3,7 +3,6 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 
 import '../domain/entities/classSizeConfig.dart';
 import '../UI/Options/Optionmenu.dart';
-import '../widgets/menu_point.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -92,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               Navigator.pushNamed(context, Optionmenu.route);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.settings,
                               color: Colors.white,
                             )),
@@ -126,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 6,
                 ),
-                buildCenter(),
+                const buildCenter(),
                 buildBottom(rname: rname),
                 buildBottom(rname: rname),
                 //   buildBottom(rname: rname),
@@ -228,16 +227,16 @@ class buildBottom extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Row(
               children: [
-                CircleAvatar(backgroundColor: Colors.black),
+                const CircleAvatar(backgroundColor: Colors.black),
                 Padding(
                   padding:
                       EdgeInsets.only(left: SizeConfig.safeBlockVertical * 2),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text(rname), Text("Likes Soccer and Gaming")],
+                    children: [Text(rname), const Text("Likes Soccer and Gaming")],
                   ),
                 ),
-                Column(
+                const Column(
                   children: [], //accept or decline
                 )
               ],

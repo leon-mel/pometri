@@ -12,15 +12,15 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE6E6E6),
+      backgroundColor: const Color(0xFFE6E6E6),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: Icon(Icons.favorite,
-            color: Color(0xFFFF0000), size: SizeConfig.blockSizeVertical * 3),
-        backgroundColor: Color(0xFF666666),
+            color: const Color(0xFFFF0000), size: SizeConfig.blockSizeVertical * 3),
+        backgroundColor: const Color(0xFF666666),
         title: Text("Pometri",
             style: TextStyle(
-                color: Color(0xFFFFFFFF),
+                color: const Color(0xFFFFFFFF),
                 fontSize: SizeConfig.blockSizeVertical * 3)),
         elevation: 16,
       ),
@@ -34,10 +34,10 @@ class Login extends StatelessWidget {
               height: SizeConfig.blockSizeVertical * 60,
               width: SizeConfig.blockSizeHorizontal * 80,
               decoration: BoxDecoration(
-                  color: Color(0xFF666666),
-                  border: Border.all(color: Color(0xFF000000), width: 1.5),
+                  color: const Color(0xFF666666),
+                  border: Border.all(color: const Color(0xFF000000), width: 1.5),
                   borderRadius: BorderRadius.circular(12)),
-              child: Column(
+              child: const Column(
                 children: [
                   Row(
                     children: [LabelLogin()],

@@ -5,7 +5,7 @@ part of 'bottom_navigation_cubit.dart';
   final NavbarItem navbarItem;
   final int selectedIndex;
 
-  BottomNavigationState(this.selectedIndex, this.navbarItem);
+  const BottomNavigationState(this.selectedIndex, this.navbarItem);
 
 
  }

@@ -1,7 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../entities/classUser.dart';
 import '../failures/failures.dart';
@@ -17,7 +14,7 @@ class UserUsecases {
     
 
     return right(users = [
-      User(
+      const User(
           id: 1,
           imageUrls: ["assets/User_1.jpg", ""],
           uAboutMe: 'Want to find new friends',
@@ -25,7 +22,7 @@ class UserUsecases {
           uInterest: ["Hiking", "Vegan", "Soccer"],
           uLocation: 'Bochum',
           uName: 'Agnes'),
-      User(
+      const User(
           id: 2,
           imageUrls: ["assets/User_2.jpg"],
           uAboutMe: 'Want to find new friends',
@@ -33,7 +30,7 @@ class UserUsecases {
           uInterest: ["Hiking", "Gaming", "Baseball"],
           uLocation: 'Dortmund',
           uName: 'Matthew'),
-          User(
+          const User(
           id: 3,
           imageUrls: ["assets/User_3.jpg"],
           uAboutMe: 'Want to find new friends',
@@ -41,7 +38,7 @@ class UserUsecases {
           uInterest: ["Hiking", "Gaming", "Baseball"],
           uLocation: 'Dortmund',
           uName: 'Kim'),
-          User(
+          const User(
           id: 4,
           imageUrls: ["assets/User_4.jpg"],
           uAboutMe: 'Want to find new friends',
@@ -49,7 +46,7 @@ class UserUsecases {
           uInterest: ["Hiking", "Gaming", "Baseball"],
           uLocation: 'Dortmund',
           uName: 'Sam'),
-          User(
+          const User(
           id: 5,
           imageUrls: ["assets/User_5.jpg"],
           uAboutMe: 'Want to find new friends',

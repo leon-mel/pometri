@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -16,7 +15,7 @@ final LottieBuilder MatchingAnimation =  Lottie.network("https://assets8.lottief
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
+          const Text(
             "Welcome Buddy!",
             style: TextStyle(
                 fontSize: 40, fontWeight: FontWeight.w600, color: Colors.grey),

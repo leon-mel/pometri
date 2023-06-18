@@ -86,7 +86,7 @@ class _PreferencesState extends State<Preferences> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Preferences',
+          title: const Text('Preferences',
               style: TextStyle(
                   fontSize: 24,
                   fontFamily: 'Roboto',
@@ -95,8 +95,8 @@ class _PreferencesState extends State<Preferences> {
         body: Container(
             padding: const EdgeInsets.all(18),
             child: ListView(children: [
-              SizedBox(height: 5),
-              Row(
+              const SizedBox(height: 5),
+              const Row(
                 children: [
                   Icon(
                     Icons.interests,
@@ -110,26 +110,26 @@ class _PreferencesState extends State<Preferences> {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Divider(height: 20, thickness: 1),
-              SizedBox(height: 3),
+              const Divider(height: 20, thickness: 1),
+              const SizedBox(height: 3),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title: ' Bouldern', value: valBouldern, icon: Icons.sports_handball, onTapmethod: changeBouldern),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                   BuildInterest(title:' Soccer', value: valSoccer, icon: Icons.sports_soccer_sharp, onTapmethod: changeSoccer),
                 ],
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title:' Material Arts', value: valMaterialArts,  icon: Icons.sports_kabaddi, onTapmethod: changeMaterialArts),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                 ],
               ),
-              SizedBox(height: 25),
-              Row(
+              const SizedBox(height: 25),
+              const Row(
                 children: [
                   Icon(Icons.fastfood_sharp, color: Colors.blue),
                   SizedBox(width: 5),
@@ -138,27 +138,27 @@ class _PreferencesState extends State<Preferences> {
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
                 ],
               ),
-              Divider(height: 20, thickness: 1),
-              SizedBox(height: 3),
+              const Divider(height: 20, thickness: 1),
+              const SizedBox(height: 3),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title:' AllFood', value: valAllFood, icon: Icons.fastfood, onTapmethod: changeAllFood),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                   BuildInterest(title:' Vegetarian', value: valVegetarian, icon: Icons.apple,onTapmethod: changeVegetarian),
                 ],
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title:' Vegan', value: valVegan, icon: Icons.apple, onTapmethod: changeVegan),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                   BuildInterest(title:' Halal', value: valHalal, icon: Icons.apple, onTapmethod: changeHalal),
                 ],
               ),
-              SizedBox(height: 25),
-              Row(
+              const SizedBox(height: 25),
+              const Row(
                 children: [
                   Icon(
                     Icons.movie_creation_outlined,
@@ -172,21 +172,21 @@ class _PreferencesState extends State<Preferences> {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Divider(height: 20, thickness: 1),
+              const Divider(height: 20, thickness: 1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title:' Instruments', value: valInstruments, icon: Icons.queue_music, onTapmethod: changeInstruments),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                   BuildInterest(title:' Singing', value: valSing, icon: Icons.mic_rounded, onTapmethod: changeSing),
                   ],
                ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   BuildInterest(title:' Writing', value: valWriting, icon: Icons.brush_outlined, onTapmethod: changeWriting),
-                  SizedBox(width: 20, height: 10,),
+                  const SizedBox(width: 20, height: 10,),
                   BuildInterest(title:' Painting', value: valPainting, icon: Icons.palette_outlined, onTapmethod: changePainting),
                 ],
               ),
