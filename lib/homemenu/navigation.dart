@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:speeddatingapp/UI/Chat/ChatPage.dart';
+import 'package:speeddatingapp/UI/Chat/ChatScreen.dart';
 import 'package:speeddatingapp/UI/Options/SettingsPageUI.dart';
 import 'package:speeddatingapp/homemenu/cubit/bottom_navigation_cubit.dart';
 import 'package:speeddatingapp/homemenu/decision.dart';
@@ -64,7 +64,7 @@ class NavigationScreen extends StatelessWidget {
           } else if (state.navbarItem == NavbarItem.profile) {
             return const Center(child: ProfileScreen());
           } else if (state.navbarItem == NavbarItem.chat) {
-            return const Center(child: ChatPage());
+            return Center(child: ChatScreen());
           } else if (state.navbarItem == NavbarItem.settings) {
             return const SettingPage();
           }
