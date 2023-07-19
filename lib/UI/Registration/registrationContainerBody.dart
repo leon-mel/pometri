@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:speeddatingapp/domain/entities/classSizeConfig.dart';
 import 'package:intl/intl.dart';
 
+import '../../backend/database.dart';
+
 class TextFieldRegUsername extends StatefulWidget {
   const TextFieldRegUsername({Key? key}) : super(key: key);
 
@@ -1158,7 +1160,7 @@ class ButtonRegTermsOfService extends StatelessWidget {
     );
   }
 }
-
+/*
 class RegistrationButton extends StatelessWidget {
   const RegistrationButton({Key? key}) : super(key: key);
 
@@ -1175,23 +1177,27 @@ class RegistrationButton extends StatelessWidget {
         width: SizeConfig.blockSizeHorizontal * 50,
         child: ElevatedButton(
           onPressed: () {
-            Widget okButton = TextButton(
-              child: const Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            );
-            AlertDialog alert = AlertDialog(
-                title: const Text("Notification"),
-                content: const Text("Your account creation was successful."),
-                actions: [okButton]);
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return alert;
-              },
-            );
+            /*
+            String username = TextFieldRegUsernameController.text;
+            String password = shaEncode(passwordController.text);
+            String firstName = TextFieldRegFirstNameController.text;
+            String lastName = TextFieldRegLastNameController.text;
+            DateTime birthDate = TextFieldRegBirthDate.text
+            String email = TextFieldRegMailController.text;
+            String mobNumber = TextFieldRegMobNumberController.text;
+            String streetAddress = TextFieldRegStreetAddressController.text;
+            String addressNumber = TextFieldRegAddressNumberController.text;
+            String city = TextFieldRegCityController.text;
+            String postCode = TextFieldRegPostCodeController.text;
+            String country = TextFieldRegCountryController.text;
+
+            writeToFirebaseUser(username, firstName, lastName, birthDate, email, mobNumber, streetAddress, addressNumber, city, postCode, country);
+            writeToFirebaseLogin(username, password);
+            */
+
           },
+          child: Text('RegistrationButton'),
+        ),
           child: const Text("Create Account",
               style: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold)),
@@ -1203,7 +1209,7 @@ class RegistrationButton extends StatelessWidget {
     );
   }
 }
-
+*/
 class ReturnToLoginRegButton extends StatelessWidget {
   const ReturnToLoginRegButton({Key? key}) : super(key: key);
 

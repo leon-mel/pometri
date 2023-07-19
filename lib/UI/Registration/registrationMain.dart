@@ -80,10 +80,10 @@ class Register extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [ButtonRegTermsOfService()],
                     ),
-                    Row(
+                    /*Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [RegistrationButton()],
-                    ),
+                    ),*/
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [ReturnToLoginRegButton()],
