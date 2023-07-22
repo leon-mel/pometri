@@ -1,11 +1,4 @@
-
-
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../UI/Login/loginContainerBody.dart';
-
 
 class DatabaseLogin{
 
@@ -103,7 +96,7 @@ void writeToFirebaseUser(
     },
     'regVerification': {
       'regFlag': 1,
-      'regTimestamp': DateTime.now().add(Duration(hours: 72))
+      'regTimestamp': DateTime.now().add(const Duration(hours: 72))
     },
   }).then((value) {
     // Erfolgreiches Schreiben in die Datenbank

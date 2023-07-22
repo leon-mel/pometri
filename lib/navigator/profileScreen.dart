@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Center(child: Text("pometri.", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 25),)),
+        title: const Center(child: Text("POMETRI.", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 25),)),
       ),
       body: BlocBuilder<ProfileScreenBloc, ProfileScreenState>(
         bloc: BlocProvider.of<ProfileScreenBloc>(context)

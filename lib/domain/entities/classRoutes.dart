@@ -26,6 +26,6 @@ getRoutes() {
     WelcomePage.route: (context) => WelcomePage(),
     DecisionPage.route: (context) => const DecisionPage(),
     SwipingPage.route: (context) => const SwipingPage(),
-    ChatScreen.route: (context) => ChatScreen()
+    ChatScreen.route: (context) => const ChatScreen()
   };
 }

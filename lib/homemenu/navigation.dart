@@ -9,16 +9,11 @@ import 'package:speeddatingapp/homemenu/home_screen_new.dart';
 import 'package:speeddatingapp/homemenu/navbar_items.dart';
 import 'package:speeddatingapp/navigator/profileScreen.dart';
 
-int _selectedIndex = 0;
 
 class NavigationScreen extends StatelessWidget {
   const NavigationScreen({Key? key}) : super(key: key);
 
   static String route = "Navigator";
-
-  void _onTappedItem(index) {
-    _selectedIndex = index;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +25,12 @@ class NavigationScreen extends StatelessWidget {
             currentIndex: state.selectedIndex,
             type: BottomNavigationBarType.fixed,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: "Profile"),
-              BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.chat), label: "Chat"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.settings), label: "Settings"),
             ],
@@ -64,9 +61,9 @@ class NavigationScreen extends StatelessWidget {
           } else if (state.navbarItem == NavbarItem.profile) {
             return const Center(child: ProfileScreen());
           } else if (state.navbarItem == NavbarItem.chat) {
-            return Center(child: ChatScreen());
+            return const Center(child: ChatScreen());
           } else if (state.navbarItem == NavbarItem.settings) {
-            return const SettingPage();
+            return const Center(child: SettingPage());
           }
           return Container();
         },
