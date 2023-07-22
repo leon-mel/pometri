@@ -267,6 +267,7 @@ class ButtonLogin extends StatefulWidget {
 
 class _ButtonLoginState extends State<ButtonLogin> {
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -285,8 +286,23 @@ class _ButtonLoginState extends State<ButtonLogin> {
             if(userResult && passwordResult){
               Navigator.pushNamed(context, WelcomePage.route);
             }else{
+              Widget okButton = TextButton(
+                child: const Text("OK", style: TextStyle(fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              );
+              AlertDialog alert = AlertDialog(
+                  title: const Text("Alert"),
+                  content: const Text("Username or password wrong!"),
+                  actions: [okButton]);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
             }
-
           },
 
           duration: const Duration(milliseconds: 125),
@@ -312,40 +328,7 @@ class _ButtonLoginState extends State<ButtonLogin> {
 
 
 
-Color colorLabelWrongUserdata = const Color(0xFFFF3232);
-class LabelWrongUserdata extends StatefulWidget{
-  const LabelWrongUserdata({Key? key}) : super(key: key);
 
-  @override
-  State<LabelWrongUserdata> createState() => _LabelWrongUserdataState();
-}
-
-class _LabelWrongUserdataState extends State<LabelWrongUserdata> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 0.5),
-        child: Center(
-          child: Container(
-            color: Colors.transparent,
-            height: SizeConfig.blockSizeVertical * 3,
-            child: Text(
-              "Username or password are wrong",
-              style: TextStyle(
-                fontSize: 1.6 * SizeConfig.blockSizeVertical,
-                fontWeight: FontWeight.bold,
-                color: colorLabelWrongUserdata,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 
 class LabelNewAccount extends StatefulWidget {

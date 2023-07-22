@@ -58,10 +58,6 @@ class Login extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [LabelWrongUserdata()],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [LabelNewAccount()],
                   ),
                 ],

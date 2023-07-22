@@ -15,35 +15,44 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileScreenBloc, ProfileScreenState>(
-      bloc: BlocProvider.of<ProfileScreenBloc>(context)
-        ..add(ProfileScreenLoadingEvent()),
-      builder: (context, state) {
-        if (state is ProfileScreenLoading) {
-          return const SizedBox(
-            height: 20,
-            width: 20,
-            child: CircularProgressIndicator(
-              color: Colors.red,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 50,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Center(child: Text("pometri.", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700, fontSize: 25),)),
+      ),
+      body: BlocBuilder<ProfileScreenBloc, ProfileScreenState>(
+        bloc: BlocProvider.of<ProfileScreenBloc>(context)
+          ..add(ProfileScreenLoadingEvent()),
+        builder: (context, state) {
+          if (state is ProfileScreenLoading) {
+            return const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(
+                color: Colors.red,
+              ),
+            );
+          } else if (state is ProfileScreenLoaded) {
+            return ProfileShowCase(
+              userAboutMe: state.user[0].uAboutMe,
+              userAge: state.user[0].uAge,
+              userLocation: state.user[0].uLocation,
+              userName: state.user[0].uName,
+              userInterest: state.user[0].uInterest,
+            );
+          } else if (state is ProfileImageChangeInitial) {
+            return const ProfileImageChange();
+          } else if (state is ProfileScreenError) {
+            return ErrorMessage(message: state.message);
+          }
+          return Container(
+            color: Colors.amber,
           );
-        } else if (state is ProfileScreenLoaded) {
-          return ProfileShowCase(
-            userAboutMe: state.user[0].uAboutMe,
-            userAge: state.user[0].uAge,
-            userLocation: state.user[0].uLocation,
-            userName: state.user[0].uName,
-            userInterest: state.user[0].uInterest,
-          );
-        } else if (state is ProfileImageChangeInitial) {
-          return const ProfileImageChange();
-        } else if (state is ProfileScreenError) {
-          return ErrorMessage(message: state.message);
-        }
-        return Container(
-          color: Colors.amber,
-        );
-      },
+        },
+      ),
     );
   }
 }
@@ -75,13 +84,15 @@ class ProfileImageChange extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   BlocProvider.of<ProfileScreenBloc>(context)
-                    .add(ProfileImageChangeUploadEvent());
+                      .add(ProfileImageChangeUploadEvent());
                 },
                 child: const Icon(Icons.photo_library)),
-            ElevatedButton(onPressed: () {
-              BlocProvider.of<ProfileScreenBloc>(context)
-                    .add(ProfileImageChangeTakePhotoEvent());
-            }, child: const Icon(Icons.camera_alt))
+            ElevatedButton(
+                onPressed: () {
+                  BlocProvider.of<ProfileScreenBloc>(context)
+                      .add(ProfileImageChangeTakePhotoEvent());
+                },
+                child: const Icon(Icons.camera_alt))
           ],
         )
       ],
@@ -136,188 +147,186 @@ class ProfileShowCase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          children: [
-            const CustomHeader(),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Container(
-                height: SizeConfig.screenHeight,
-                width: SizeConfig.screenWidth,
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                        alignment: Alignment.bottomCenter,
-                        clipBehavior: Clip.none,
-                        children: [
-                          SizedBox(
-                            height: SizeConfig.screenHeight / 2,
-                            width: SizeConfig.screenWidth,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(25),
-                                  bottomRight: Radius.circular(25)),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage('assets/user.png'))),
-                                child: ListView.separated(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: 3,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Align(
-                                        alignment: Alignment.bottomLeft,
-                                        child: UserImageSmall(
-                                          userImage: "assets/user.png",
-                                          userImageHeight: 60.5,
-                                          userImageWidth: 60.5,
-                                        ),
+      child: Column(
+        children: [
+          Container(
+            height: SizeConfig.screenHeight,
+            width: SizeConfig.screenWidth,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                    alignment: Alignment.bottomCenter,
+                    clipBehavior: Clip.none,
+                    children: [
+                      SizedBox(
+                        height: SizeConfig.screenHeight / 2,
+                        width: SizeConfig.screenWidth,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage('assets/user.png'))),
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 3,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: UserImageSmall(
+                                        userImage: "assets/user.png",
+                                        userImageHeight: 60.5,
+                                        userImageWidth: 60.5,
                                       ),
-                                    );
-                                  },
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
-                                    return const SizedBox(
-                                      width: 2,
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return const SizedBox(
+                                    width: 2,
+                                  );
+                                },
                               ),
                             ),
                           ),
-                          ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<ProfileScreenBloc>(context)
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FloatingActionButton(
+                            onPressed: () {
+                              BlocProvider.of<ProfileScreenBloc>(context)
                                   .add(ProfileImageChangeEvent());
-                              },
-                              child: Container(
-                                color: Colors.black,
-                              ))
-                        ]),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeHorizontal * 10),
-                      child: Row(
-                        children: [
-                          Text(
-                            userName + ", ",
-                            style: TextStyle(
-                                fontSize: 26,
-                                decoration: TextDecoration.none,
-                                color: Colors.grey[500]),
+                            },
                           ),
-                          Text(
-                            userAge.toString(),
-                            style: TextStyle(
-                                fontSize: 26,
-                                decoration: TextDecoration.none,
-                                color: Colors.grey[500]),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeHorizontal * 2),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.grey[500]?.withOpacity(0.5),
-                            size: 16,
-                          ),
-                          Text(
-                            userLocation + ", ",
-                            style: TextStyle(
-                                fontSize: 14,
-                                decoration: TextDecoration.none,
-                                color: Colors.grey[500]?.withOpacity(0.5)),
-                          ),
-                          Text("47 km",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  decoration: TextDecoration.none,
-                                  color: Colors.grey[500]?.withOpacity(0.5)))
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeHorizontal * 10),
-                      child: Text(
-                        "About me",
+                        ),
+                      )
+                    ]),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeHorizontal * 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        userName + ", ",
                         style: TextStyle(
-                            fontSize: 22,
+                            fontSize: 26,
                             decoration: TextDecoration.none,
                             color: Colors.grey[500]),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeHorizontal * 2),
-                      child: Text(
-                        userAboutMe,
+                      Text(
+                        userAge.toString(),
+                        style: TextStyle(
+                            fontSize: 26,
+                            decoration: TextDecoration.none,
+                            color: Colors.grey[500]),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeHorizontal * 2),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        color: Colors.grey[500]?.withOpacity(0.5),
+                        size: 16,
+                      ),
+                      Text(
+                        userLocation + ", ",
                         style: TextStyle(
                             fontSize: 14,
                             decoration: TextDecoration.none,
                             color: Colors.grey[500]?.withOpacity(0.5)),
                       ),
-                    ),
+                      Text("47 km",
+                          style: TextStyle(
+                              fontSize: 14,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey[500]?.withOpacity(0.5)))
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeHorizontal * 10),
+                  child: Text(
+                    "About me",
+                    style: TextStyle(
+                        fontSize: 22,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeHorizontal * 2),
+                  child: Text(
+                    userAboutMe,
+                    style: TextStyle(
+                        fontSize: 14,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]?.withOpacity(0.5)),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 5,
+                      top: SizeConfig.blockSizeHorizontal * 10),
+                  child: Text(
+                    "Interests",
+                    style: TextStyle(
+                        fontSize: 22,
+                        decoration: TextDecoration.none,
+                        color: Colors.grey[500]),
+                  ),
+                ),
+                Wrap(children: [
+                  for (var i in userInterest!)
                     Padding(
                       padding: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 5,
-                          top: SizeConfig.blockSizeHorizontal * 10),
-                      child: Text(
-                        "Interests",
-                        style: TextStyle(
-                            fontSize: 22,
-                            decoration: TextDecoration.none,
-                            color: Colors.grey[500]),
-                      ),
-                    ),
-                    Wrap(children: [
-                      for (var i in userInterest!)
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 5,
-                              top: SizeConfig.blockSizeHorizontal * 3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.grey.withOpacity(0.5)),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                i,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none,
-                                    color: Colors.grey[500]?.withOpacity(0.8),
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
+                          top: SizeConfig.blockSizeHorizontal * 3),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Colors.grey.withOpacity(0.5)),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            i,
+                            style: TextStyle(
+                                fontSize: 14,
+                                decoration: TextDecoration.none,
+                                color: Colors.grey[500]?.withOpacity(0.8),
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
-                    ])
-                  ],
-                ),
-              ),
+                      ),
+                    ),
+                ])
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

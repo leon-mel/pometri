@@ -4,6 +4,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../UI/Login/loginContainerBody.dart';
+
 
 class DatabaseLogin{
 
@@ -59,6 +61,81 @@ Future<bool> getLoginField(String collection, String userID,String field, String
     }
   }
   return false;
+}
+
+
+
+void writeToFirebaseUser(
+    String username,
+    String firstName,
+    String lastName,
+    DateTime birthDate,
+    String email,
+    String mobNumber,
+    String streetAddress,
+    String addressNumber,
+    String city,
+    String postCode,
+    String country) {
+
+  // Firestore-Referenz erstellen
+  CollectionReference usersCollection = FirebaseFirestore.instance.collection('user');
+
+  // Neues Dokument erstellen mit dem Benutzernamen als ID
+  DocumentReference userDoc = usersCollection.doc(username);
+
+  // Daten in das Dokument schreiben
+  userDoc.set({
+    'first_name': firstName,
+    'last_name': lastName,
+    'date_of_birth': Timestamp.fromDate(birthDate),
+    'email': email,
+    'mobilenumber': {
+      'country_code': '+49',
+      'number': mobNumber,
+    },
+    'address': {
+      'street': streetAddress,
+      'streetnumber': addressNumber,
+      'city': city,
+      'postal_code': postCode,
+      'country': country,
+    },
+    'regVerification': {
+      'regFlag': 1,
+      'regTimestamp': DateTime.now().add(Duration(hours: 72))
+    },
+  }).then((value) {
+    // Erfolgreiches Schreiben in die Datenbank
+    print('Daten wurden erfolgreich in die Firebase-Datenbank geschrieben!');
+  }).catchError((error) {
+    // Fehler beim Schreiben in die Datenbank
+    print('Fehler beim Schreiben in die Firebase-Datenbank: $error');
+  });
+}
+
+void writeToFirebaseLogin(
+    String username,
+    String password) {
+
+  // Firestore-Referenz erstellen
+  CollectionReference usersCollection = FirebaseFirestore.instance.collection('login');
+
+  // Neues Dokument erstellen mit dem Benutzernamen als ID
+  DocumentReference userDoc = usersCollection.doc(username);
+
+  // Daten in das Dokument schreiben
+  userDoc.set({
+    'password': password,
+    'userRef': username,
+
+  }).then((value) {
+    // Erfolgreiches Schreiben in die Datenbank
+    print('Daten wurden erfolgreich in die Firebase-Datenbank geschrieben!');
+  }).catchError((error) {
+    // Fehler beim Schreiben in die Datenbank
+    print('Fehler beim Schreiben in die Firebase-Datenbank: $error');
+  });
 }
 
 
