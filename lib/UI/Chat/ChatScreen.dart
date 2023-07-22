@@ -16,73 +16,95 @@ class _ChatScreenState extends State<ChatScreen> {
   final CollectionReference _messagesCollection =
   FirebaseFirestore.instance.collection('messages');
 
+  // Dictionary to map smiley keywords to emojis
+  final Map<String, String> _smileyDictionary = {
+    ':)': '😊',
+    ':-)': '😊',
+    '(:': '😊',
+    '(-:': '😊',
+    ':D': '😄',
+    ':-D': '😄',
+    ';)': '😉',
+    ';-)': '😉',
+    ':(': '😞',
+    ':-(': '😞',
+    '<3': '♥',
+    ':|': '😐',
+    ':-|': '😐',
+    '|:': '😐',
+    '|-:': '😐',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat'),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _messagesCollection
-                  .where('sender', whereIn: ['Person A', 'Person B']) // PLATZHALTER, HIER MÜSSEN PERSONEN HIN, WENN MATCH VORHANDEN
-                  .orderBy('timestamp')
-                  .snapshots(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                }
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _messagesCollection
+            .where('sender', whereIn: ['Person A', 'Person B'])
+            .orderBy('timestamp')
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text('Loading...');
-                }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-                final messages = snapshot.data?.docs ?? [];
+          final messages = snapshot.data?.docs ?? [];
+          final chatMessages = messages.map((document) {
+            final text = document['text'];
+            final sender = document['sender'];
+            final timestamp = (document['timestamp'] as Timestamp).toDate();
 
-                return ListView.builder(
-                  reverse: true,
-                  itemCount: messages.length,
-                  itemBuilder: (context, index) {
-                    final document = messages[index];
+            // Replace smiley keywords with emojis
+            String emojiText = text;
+            _smileyDictionary.forEach((key, value) {
+              emojiText = emojiText.replaceAll(key, value);
+            });
 
-                    return ListTile(
-                      title: Text(document['text']),
-                      subtitle: Text(document['sender']),
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          Divider(),
-          ListTile(
-            leading: IconButton(
-              icon: Icon(Icons.send),
-              onPressed: () {
-                _sendMessage(_textController.text);
-              },
-            ),
-            title: TextFormField(
-              controller: _textController,
-              decoration: InputDecoration(labelText: 'Enter a message'),
-            ),
-          ),
-        ],
+            return types.TextMessage(
+              author: types.User(id: sender),
+              createdAt: timestamp.millisecondsSinceEpoch, // Convert to Unix timestamp in milliseconds
+              id: document.id,
+              text: emojiText,
+            );
+          }).toList();
+
+          return Chat(
+            messages: chatMessages.reversed.toList(), // Reverse the list
+            onSendPressed: _sendMessage,
+            user: types.User(id: 'Person A'), // Replace with the current user's ID
+          );
+        },
       ),
     );
   }
 
-  void _sendMessage(String text) async {
-    if (text.isNotEmpty) {
-      await _messagesCollection.add({
-        'text': text,
-        'sender': 'Person A', //PLATZHALTER HIER MUSS DIE PERSON HIN, WENN EIN MATCH VORHANDEN IST
-        'timestamp': DateTime.now(),
+  void _sendMessage(types.PartialText message) async {
+    if (message.text.isNotEmpty) {
+      // Replace emojis with smiley keywords before storing in the database
+      String keywordText = message.text;
+      _smileyDictionary.forEach((key, value) {
+        keywordText = keywordText.replaceAll(value, key);
       });
-      _textController.clear();
+
+      // Convert DateTime to Firestore Timestamp
+      final timestamp = Timestamp.fromDate(DateTime.now());
+
+      await _messagesCollection.add({
+        'text': keywordText,
+        'sender': 'Person A',
+        'timestamp': timestamp,
+      });
     }
   }
 }
