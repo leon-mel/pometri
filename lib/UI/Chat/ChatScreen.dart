@@ -12,8 +12,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final CollectionReference _messagesCollection = FirebaseFirestore.instance
-      .collection('messages');
+  final CollectionReference _messagesCollection = FirebaseFirestore.instance.collection('messages');
   final Map<String, String> _smileyDictionary = {
     // Hier kann ausgewählt werden welche Zeichen-Smileys zu welchen Ascii-Emojis umgewandelt werden sollen
     ':)': '😊',
@@ -31,6 +30,21 @@ class _ChatScreenState extends State<ChatScreen> {
     ':-|': '😐',
     '|:': '😐',
     '|-:': '😐',
+    ":'D": '😂',
+    ":-'D": '😂',
+    'D:': '😱 ',
+    'D-:': '😱 ',
+    'B)': '😎',
+    'B-)': '😎',
+    '</3': '💔',
+    '-_-': '😒',
+    'x_x': '💀',
+    'X_X': '💀',
+    'T_T': '😒',
+    '^-^': '🤗',
+    '^_^': '🤗',
+    '*_*': '🤩',
+    '*-*': '🤩',
   };
 
   @override
@@ -69,19 +83,17 @@ class _ChatScreenState extends State<ChatScreen> {
             });
 
             return types.TextMessage(
-              author: types.User(id: sender),
-              createdAt: timestamp.millisecondsSinceEpoch,
-              // Timestamp in Unix Zeit
+              author: types.User(id: sender), //Platzhalter für UserID des Absenders
+              createdAt: timestamp.millisecondsSinceEpoch,  // Timestamp in Unix Zeit
               id: document.id,
               text: emojiText,
             );
           }).toList();
 
           return Chat(
-            messages: chatMessages.reversed.toList(),
-            // Chat wird dadurch von oben nach unten angezeigt
+            messages: chatMessages.reversed.toList(), // Chat wird dadurch von oben nach unten angezeigt
             onSendPressed: _sendMessage,
-            user: const types.User(id: 'Person A'), // Platzhalter für UserID
+            user: const types.User(id: 'Person A'), // Platzhalter für UserID des aktuellen App-Nutzers
           );
         },
       ),
@@ -101,8 +113,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
       await _messagesCollection.add({
         'text': keywordText,
-        'sender': 'Person A',
-        //hier muss noch der Name der Person angegeben werden, wenn Matching implementiert
+        'sender': 'Person A',       //hier muss noch der Name der Person angegeben werden, wenn Matching implementiert
         'timestamp': timestamp,
       });
     }
